@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block start %}
+
+
+  <div class="main flex flex-col mx-2 my-28 lg:mx-12">
+    
+    
+    
+    <h1 class="text-2xl font-semibold mt-8 z-[-99] relative">Properties for Rent in {{ city_name }}</h1>
+
+    
+<div>
+    <div class="flex flex-wrap justify-center ">
+      {% for rent_message in rent_messages %}
+        <!-- card 1 -->
+       <a href="{% url 'rent' rent_message.name_of_prop %}">
+        <div class="min-h-80 h-80 w-60 min-w-60 rounded overflow-hidden shadow-lg hover:shadow-xl m-5">
+          <img class="w-full " src="{{ rent_message.images.url }}">
+          <div class="px-2 py-2">
+            <div class="mb-2">
+              <h2 class="text-sm font-bold text-gray-900">{{rent_message.name_of_prop}}</h2>
+             
+            </div>
+            <div class="flex justify-around">
+              <div class="flex items-center mr-3">
+                <img src="/static/images/bed.svg"/>
+                <p class="ml-1 text-sm font-medium text-gray-700">{{rent_message.rooms}}</p>
+              </div>
+              <div class="flex items-center">
+                <img src="/static/images/washroom.svg" />
+                <p class="ml-1 text-sm font-medium text-gray-700">{{rent_message.baths}}</p>
+              </div>
+              <div class="flex items-center">
+                <img src="/static/images/area.svg"/>
+                <p class="ml-1 text-sm font-medium text-gray-700">{{rent_message.size}}sqm</p>
+              </div>
+            </div>
+            <div class="mt-4">
+              <p class="text-2xl font-extrabold text-blue-800">{{rent_message.price}}</p>
+            </div>
+          </div>
+          <div class="px-2 flex justify-between items-center">
+            <div class="flex items-center">
+              
+              <div>
+                <p class="text-sm font-medium text-gray-800">Owner Name</p>
+                <p class="text-xs text-gray-600">{{rent_message.owner_name}}</p>
+              </div>
+            </div>
+            
+        </div>
+        </div>
+       </a>
+                {% endfor %}
+                  </div>
+                 
+                </div>
+
+
+                <div class="inline-flex rounded-xl justify-center items-center mt-14">
+                    <ul class="flex items-center">
+                        <li class="px-2">
+                            <button aria-disabled="true" disabled="" class="w-9 h-9 flex items-center justify-center rounded-md border disabled">
+                                <span>
+                                    <svg width="8" height="15" viewBox="0 0 8 15" class="fill-current stroke-current"><path d="M7.12979 1.91389L7.1299 1.914L7.1344 1.90875C7.31476 1.69833 7.31528 1.36878 7.1047 1.15819C7.01062 1.06412 6.86296 1.00488 6.73613 1.00488C6.57736 1.00488 6.4537 1.07206 6.34569 1.18007L6.34564 1.18001L6.34229 1.18358L0.830207 7.06752C0.830152 7.06757 0.830098 7.06763 0.830043 7.06769C0.402311 7.52078 0.406126 8.26524 0.827473 8.73615L0.827439 8.73618L0.829982 8.73889L6.34248 14.6014L6.34243 14.6014L6.34569 14.6047C6.546 14.805 6.88221 14.8491 7.1047 14.6266C7.30447 14.4268 7.34883 14.0918 7.12833 13.8693L1.62078 8.01209C1.55579 7.93114 1.56859 7.82519 1.61408 7.7797L1.61413 7.77975L1.61729 7.77639L7.12979 1.91389Z" stroke-width="0.3"></path></svg>
+                                </span>
+                            </button>
+                        </li>
+                        <li class="px-2">
+                            <button class="w-9 h-9 rounded-md border hover:border-cyan-500 hover:text-indigo-500 text-indigo-500">1</button>
+                        </li>
+                        <li class="px-2">
+                            <button class="w-9 h-9 rounded-md border hover:border-cyan-500 hover:text-indigo-500">2</button>
+                        </li>
+                        <li class="px-2">
+                            <button class="w-9 h-9 rounded-md border hover:border-cyan-500 hover:text-indigo-500">3</button>
+                        </li>
+                        <li class="px-2">
+                            <button class="w-9 h-9 rounded-md border hover:border-cyan-500 hover:text-indigo-500">4</button>
+                        </li>
+                        <li class="px-2">
+                            <button class="w-9 h-9 rounded-md border hover:border-cyan-500 hover:text-indigo-500">5</button>
+                        </li>
+                        <li class="px-2">
+                            <button aria-disabled="false" class="w-9 h-9 flex items-center justify-center rounded-md border hover:text-indigo-500">
+                                <span>
+                                    <svg width="8" height="15" viewBox="0 0 8 15" class="fill-current stroke-current"><path d="M0.870212 13.0861L0.870097 13.086L0.865602 13.0912C0.685237 13.3017 0.684716 13.6312 0.895299 13.8418C0.989374 13.9359 1.13704 13.9951 1.26387 13.9951C1.42264 13.9951 1.5463 13.9279 1.65431 13.8199L1.65436 13.82L1.65771 13.8164L7.16979 7.93248C7.16985 7.93243 7.1699 7.93237 7.16996 7.93231C7.59769 7.47923 7.59387 6.73477 7.17253 6.26385L7.17256 6.26382L7.17002 6.26111L1.65752 0.398611L1.65757 0.398563L1.65431 0.395299C1.454 0.194997 1.11779 0.150934 0.895299 0.373424C0.695526 0.573197 0.651169 0.908167 0.871667 1.13067L6.37922 6.98791C6.4442 7.06886 6.43141 7.17481 6.38592 7.2203L6.38587 7.22025L6.38271 7.22361L0.870212 13.0861Z" stroke-width="0.3"></path></svg>
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="border mt-14 text-sm"></div>
+                <p>{{ city_name }} the federal capital of Pakistan, has been ranked as the most beautiful capital in the world. The city is famous not only for its scenic beauty and the wide landscapes of the iconic Margalla hills but also for the green vegetation that is strewn across the city. These eyes-catching scenes spread across {{ city_name }} also make it the greenest city in the country. Due to the spellbinding beauty of {{ city_name }} it is one of the most desired locations across Pakistan to have your own dream house.</p>
+                <p class="pt-7 text-sm">This modern, well-planned, and maintained city is a combination of modernity and old Islamic and regional traditions. One such example of the amalgamation of history and culture is the Railway Station of {{ city_name }}. The beige-coloredbeige-coloured railroad is adorned and loved by millions of tourists who often visit the place and learn about the history of this railway track.</p>
+                <p class="pt-7 text-sm">Another iconic megastructure in the city is the Faisal mosque. The mural petals inside the mosque are structured according to the culture of {{ city_name }}. Florence Mall and the Mall of Saudi Arabia are other examples of this modern structure. The bright colours of these mega-structures further enhance the beauty of {{ city_name }} and give it a modern look.</p>
+                <p class="pt-7 text-sm">{{ city_name }} offers a wide array of property for investors. Having modern class bungalows in all varieties, the price range offered by this beautiful city can cater to the need of everyone. The posh area of {{ city_name }} namely F-6 and E-6 is priced a bit higher compared to the rest of the city. The best perk for buying a house in {{ city_name }} includes that the house is freshly constructed with modern engineering techniques. Moreover, most areas in {{ city_name }} have basic electricity, gas, and water supplies along with high-speed internet connectivity. Furthermore, the crime rate of this region is significantly lower than the other areas of Pakistan which makes it a complete haven for people of all age groups to live in.</p>
+                
+                <p class="py-5 font-bold">The house for sale in {{ city_name }} includes three types of properties: </p>
+                
+                <ul class="py-5">
+                  <li>
+                    Small house for Rent in Pakistan
+                  </li>
+                  <li>
+                    Medium house for Rent in Pakistan
+                  </li>
+                  <li>
+                    Large house for Rent in Pakistan
+                  </li>
+                </ul>
+                
+                <p class="text-sm">These categories are based on the plot sizes which usually includes 5 Marla plot, 10 Marla plot, and 1 Kanal plot. 5 Marla plots fall within the category of small houses, 10 Marla plots fall under the category of medium houses while 1 Kanal plot falls under the category of large houses. </p>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    
+      
+{% endblock %}

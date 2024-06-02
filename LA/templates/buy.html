@@ -1,0 +1,459 @@
+{% extends "base.html" %}
+{% block start %}
+
+    <div class="main">
+     
+      <div class="page4 min-w-full w-full max-w-full h-auto px-4">
+      
+        <div class="lg:ml-16">
+
+
+            <h1 class="text-xl font-bold mt-28">Properties for Sale in Islamabad</h1>
+           
+           
+            <div class="btns h-16 flex gap-x-7  whitespace-nowrap mt-5" id="propertyTypeButtons">
+                <button type="button" data-type="Residential" class="recentbtn3 activebtn3 border rounded-md min-w-24 h-10">Residential</button>
+        <button type="button" data-type="Plot" class="recentbtn3 border rounded-md min-w-24 h-10">Plot</button>
+         <button type="button" data-type="Commercial" class="recentbtn3 border rounded-md min-w-24 h-10">Commercial</button>
+          </div>
+          
+               
+              </div>
+          </div>
+       
+        
+        <div  class="card-container overflow-x-auto whitespace-nowrap mt-1 relative ml-2 lg:ml-0 overflow-hidden ">
+    
+                  <div class="hidden left3 h-80 w-16 lg:flex items-center cursor-pointer bg-white absolute left-0 top-0 bottom-0 z-10">
+                <img class="w-12 mx-auto" src="/static/images/left.svg" alt="">
+                </div>
+    
+                    <div class="hidden lg:flex right3 h-80 w-16 items-center bg-white absolute cursor-pointer right-0  top-0 bottom-0 z-10">
+                <img class="w-12 mx-auto" src="/static/images/right.svg" alt="">
+                 </div>
+    
+               <div id="cardContainer" class="recentcards w-full lg:w-[93%] lg:max-w-[93%] lg:items-center gap-4 inline-flex lg:ml-[4.5rem] lg:overflow-hidden  whitespace-nowrap" >
+    
+                <!-- Card 1 -->
+
+
+               {% for sell_message1 in sell_messages %}
+    {% if sell_message1.name_of_prop %}
+        <div class="card-wrapper">
+            
+            <a href="{% url 'n' sell_message1.name_of_prop %}">
+                {% if sell_message1.city == 'isl' %}
+                    <div class="min-h-80 h-80 w-60 border min-w-60 rounded overflow-hidden shadow-lg hover:shadow-xl" data-property-type="{{ sell_message1.property_type }}">
+                        <img class="w-full" src="{{ sell_message1.images.url }}" alt="Property Image">
+                        <div class="px-2 py-2">
+                            <div class="mb-2">
+                                <h2 class="text-sm font-bold text-gray-900">{{ sell_message1.name_of_prop }}</h2>
+                            </div>
+                            <div class="flex justify-around">
+                                <div class="flex items-center mr-3">
+                                    <img src="/static/images/bed.svg"/>
+                                    <p class="ml-1 text-sm font-medium text-gray-700">{{ sell_message1.rooms }}</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <img src="/static/images/washroom.svg" />
+                                    <p class="ml-1 text-sm font-medium text-gray-700">{{ sell_message1.baths }}</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <img src="/static/images/area.svg"/>
+                                    <p class="ml-1 text-sm font-medium text-gray-700">{{ sell_message1.size }}</p>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-2xl font-extrabold text-blue-800">{{ sell_message1.price }}</p>
+                            </div>
+                        </div>
+                        <div class="px-2 flex justify-between items-center">
+                            <div class="flex items-center">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800">{{sell_message1.owner_name}}</p>
+                                    <p class="text-xs text-gray-600">Real Estate Agent</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </a>
+        </div>
+    {% endif %}
+{% endfor %}
+
+          
+
+                <!-- End of Card 1 -->
+    
+                <!-- Add more cards here if needed -->
+    
+            </div>
+           
+           
+        </div>
+       
+        <div class="flex items-center mt-6 transition duration-500 ease-in-out hover:underline ml-4">
+          <a href="/insidebuy1?city=isl">View more</a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 48 48"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M19 12L31 24L19 36"/></svg>
+        </div>
+        
+        
+        <div class="lg:ml-16">
+
+
+          <h1 class="text-xl font-bold mt-28 ml-4">Properties for Sale in Lahore</h1>
+         
+         
+         
+          <div class="btns h-16 flex gap-x-7  whitespace-nowrap mt-5 ml-4" id="propertyTypeButtons1">
+            <button type="button" data-type="Residential" class="recentbtn4 activebtn4 border rounded-md min-w-24 h-10">Residential</button>
+            <button type="button" data-type="Plot" class="recentbtn4 border rounded-md min-w-24 h-10">Plot</button>
+             <button type="button" data-type="Commercial" class="recentbtn4 border rounded-md min-w-24 h-10">Commercial</button>
+        </div>
+        
+             
+            </div>
+        </div>
+     
+      
+      <div class="card-container overflow-x-auto whitespace-nowrap mt-1 relative overflow-hidden ml-4 lg:ml-0">
+  
+                <div class="hidden left4 h-80 w-16 lg:flex items-center cursor-pointer bg-white absolute left-0 top-0 bottom-0 z-10">
+              <img class="w-12 mx-auto" src="/static/images/left.svg" alt="">
+              </div>
+  
+                  <div class="hidden lg:flex right4 h-80 w-16 items-center bg-white absolute cursor-pointer right-0  top-0 bottom-0 z-10">
+              <img class="w-12 mx-auto" src="/static/images/right.svg" alt="">
+               </div>
+  
+             <div id="cardContainer1" class="lahorecards w-full lg:w-[93%] lg:max-w-[93%] lg:items-center gap-4 inline-flex lg:ml-[4.5rem] lg:overflow-hidden  whitespace-nowrap" id="cardContainer">
+  
+              <!-- Card 1 -->
+             
+              {% for n1 in sell_messages %}
+              {% if n1.name_of_prop %}
+                  <div class="card-container">
+                      <a href="{% url 'n' n1.name_of_prop %}" >
+                          {% if n1.city == 'lhr' %}
+                              <div class="min-h-80 h-80 border w-60 min-w-60 rounded overflow-hidden shadow-lg hover:shadow-xl" data-property-type="{{ n1.property_type }}">
+                                  <img class="w-full" src="{{ n1.images.url }}" alt="Property Image">
+                                  <div class="px-2 py-2">
+                                      <div class="mb-2">
+                                          <h2 class="text-sm font-bold text-gray-900">{{ n1.name_of_prop }}</h2>
+                                      </div>
+                                      <div class="flex justify-around">
+                                          <div class="flex items-center mr-3">
+                                              <img src="/static/images/bed.svg"/>
+                                              <p class="ml-1 text-sm font-medium text-gray-700">{{ n1.rooms }}</p>
+                                          </div>
+                                          <div class="flex items-center">
+                                              <img src="/static/images/washroom.svg" />
+                                              <p class="ml-1 text-sm font-medium text-gray-700">{{ n1.baths }}</p>
+                                          </div>
+                                          <div class="flex items-center">
+                                              <img src="/static/images/area.svg"/>
+                                              <p class="ml-1 text-sm font-medium text-gray-700">{{ n1.size }}</p>
+                                          </div>
+                                      </div>
+                                      <div class="mt-4">
+                                          <p class="text-2xl font-extrabold text-blue-800">{{ n1.price }}</p>
+                                      </div>
+                                  </div>
+                                  <div class="px-2 flex justify-between items-center">
+                                      <div class="flex items-center">
+                                          <div>
+                                              <p class="text-sm font-medium text-gray-800">Agent Name</p>
+                                              <p class="text-xs text-gray-600">Real Estate Agent</p>
+                                          </div>
+                                      </div>
+                                      
+                                  </div>
+                              </div>
+                          {% endif %}
+                      </a>
+                  </div>
+              {% endif %}
+          {% endfor %}
+          
+          
+                <!-- End of Card 1 -->
+  
+              <!-- Add more cards here if needed -->
+  
+          </div>
+         
+         
+      </div>
+     
+      <div class="flex items-center mt-6 transition duration-500 ease-in-out hover:underline ml-4">
+        <a href="/insidebuy1?city=lhr">View more</a>
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 48 48"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M19 12L31 24L19 36"/></svg>
+      </div>
+      
+      <div class="lg:ml-16">
+
+
+        <h1 class="text-xl font-bold mt-28 ml-4">Properties for Sale in Sahiwal</h1>
+       
+       
+        <div class="btns h-16 flex gap-x-7 ml-4 whitespace-nowrap mt-5" id="propertyTypeButtons2">
+            <button type="button" data-type="Residential" class="recentbtn5 activebtn5 border rounded-md min-w-24 h-10">Residential</button>
+        <button type="button" data-type="Plot" class="recentbtn5 border rounded-md min-w-24 h-10">Plot</button>
+         <button type="button" data-type="Commercial" class="recentbtn5 border rounded-md min-w-24 h-10">Commercial</button>
+      </div>
+      
+           
+          </div>
+      </div>
+   
+    
+    <div class="card-container overflow-x-auto whitespace-nowrap mt-1 relative  overflow-hidden ml-4 lg:ml-0">
+
+              <div class="hidden left5 h-80 w-16 lg:flex items-center cursor-pointer bg-white absolute left-0 top-0 bottom-0 z-10">
+            <img class="w-12 mx-auto" src="/static/images/left.svg" alt="">
+            </div>
+
+                <div class="hidden lg:flex right5 h-80 w-16 items-center bg-white absolute cursor-pointer right-0    top-0 bottom-0 z-10">
+            <img class="w-12 mx-auto" src="/static/images/right.svg" alt="">
+             </div>
+
+           <div id="cardContainer2" class="sahiwalcards w-full lg:w-[93%] lg:max-w-[93%] lg:items-center gap-4 inline-flex lg:ml-[4.5rem] lg:overflow-hidden whitespace-nowrap" id="cardContainer">
+
+            <!-- Card 1 -->
+           
+            {% for p in sell_messages %}
+            {% if p.name_of_prop %}
+                <a href="{% url 'n' p.name_of_prop %}">
+                    {% if p.city == 'swl' %}
+                        <div class="min-h-80 h-80 w-60 border min-w-60 rounded overflow-hidden shadow-lg hover:shadow-xl" data-property-type="{{ n.property_type }}">
+                            <img class="w-full" src="{{ p.images.url }}" alt="Property Image">
+                            <div class="px-2 py-2">
+                                <div class="mb-2">
+                                    <h2 class="text-sm font-bold text-gray-900">{{ p.name_of_prop }}</h2>
+                                </div>
+                                <div class="flex justify-around">
+                                    <div class="flex items-center mr-3">
+                                        <img src="/static/images/bed.svg"/>
+                                        <p class="ml-1 text-sm font-medium text-gray-700">{{ p.rooms }}</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <img src="/static/images/washroom.svg" />
+                                        <p class="ml-1 text-sm font-medium text-gray-700">{{ p.baths }}</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <img src="/static/images/area.svg"/>
+                                        <p class="ml-1 text-sm font-medium text-gray-700">{{ p.size }}</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <p class="text-2xl font-extrabold text-blue-800">{{ p.price }}</p>
+                                </div>
+                            </div>
+                            <div class="px-2 flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">Agent Name</p>
+                                        <p class="text-xs text-gray-600">Real Estate Agent</p>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    {% endif %}
+                </a>
+            {% endif %}
+        {% endfor %}
+        
+            
+            <!-- End of Card 1 -->
+
+            <!-- Add more cards here if needed -->
+
+        </div>
+       
+       
+    </div>
+   
+    <div class="flex items-center mt-6 transition duration-500 ease-in-out hover:underline ml-4">
+      <a href="/insidebuy1?city=swl">View more</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 48 48"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M19 12L31 24L19 36"/></svg>
+    </div>
+    
+
+
+        <div class="lg:ml-16">
+          <h1 class="text-xl font-bold mt-14 ml-4">Properties for Sale in Peshawar</h1>
+         
+          <div class="btns h-16 flex gap-x-7  whitespace-nowrap mt-5 ml-4" id="propertyTypeButtons3">
+            <button type="button" data-type="Residential" class="recentbtn6 activebtn6 border rounded-md min-w-24 h-10">Residential</button>
+        <button type="button" data-type="Plot" class="recentbtn6 border rounded-md min-w-24 h-10">Plot</button>
+         <button type="button" data-type="Commercial" class="recentbtn6 border rounded-md min-w-24 h-10">Commercial</button>
+
+      </div>
+      <div class="card-container overflow-x-auto whitespace-nowrap mt-1 relative overflow-hidden ml-4 lg:ml-0">
+    
+        <div class="hidden left6 h-80 w-16 lg:flex items-center cursor-pointer bg-white absolute left-0 top-0 bottom-0 z-10">
+            <img class="w-12 mx-auto" src="/static/images/left.svg" alt="">
+        </div>
+
+        <div class="hidden lg:flex right6 h-80 w-16 items-center bg-white absolute cursor-pointer right-0 top-0 bottom-0 z-10">
+            <img class="w-12 mx-auto" src="/static/images/right.svg" alt="">
+        </div>
+
+        <div id="cardContainer3" class="peshawarcards w-full lg:w-[93%] lg:max-w-[93%] lg:items-center gap-4 inline-flex lg:ml-[4.5rem] lg:overflow-hidden  whitespace-nowrap">
+
+            <!-- Card 1 -->
+
+            {% for m in sell_messages %}
+            {% if m.name_of_prop %}
+                <a href="{% url 'n' m.name_of_prop %}">
+                    {% if m.city == 'psh' %}
+                        <div class="min-h-80 h-80 w-60 min-w-60 border rounded overflow-hidden shadow-lg hover:shadow-xl" data-property-type="{{ m.property_type }}">
+                            <img class="w-full" src="{{ m.images.url }}" alt="Property Image">
+                            <div class="px-2 py-2">
+                                <div class="mb-2">
+                                    <h2 class="text-sm font-bold text-gray-900">{{ m.name_of_prop }}</h2>
+                                </div>
+                                <div class="flex justify-around">
+                                    <div class="flex items-center mr-3">
+                                        <img src="/static/images/bed.svg"/>
+                                        <p class="ml-1 text-sm font-medium text-gray-700">{{ m.rooms }}</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <img src="/static/images/washroom.svg" />
+                                        <p class="ml-1 text-sm font-medium text-gray-700">{{ m.baths }}</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <img src="/static/images/area.svg"/>
+                                        <p class="ml-1 text-sm font-medium text-gray-700">{{ m.size }}</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <p class="text-2xl font-extrabold text-blue-800">{{ m.price }}</p>
+                                </div>
+                            </div>
+                            <div class="px-2 flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">Agent Name</p>
+                                        <p class="text-xs text-gray-600">Real Estate Agent</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    {% endif %}
+                </a>
+            {% endif %}
+        {% endfor %}
+            </div>
+            </div>
+            
+            
+            <!-- End of Card 1 -->
+
+            <!-- Add more cards here if needed -->
+
+        </div>
+    </div>
+
+    <!-- Link Block -->
+    <div class="flex items-center mt-6 transition duration-500 ease-in-out hover:underline ml-4 mb-20">
+        <a href="/insidebuy1?city=psh">View more</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 48 48">
+          <path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M19 12L31 24L19 36"/>
+        </svg>
+    </div>
+    
+  
+        <div class="lg:ml-16">
+          <h1 class="text-xl font-bold mt-14 ml-4">Properties for Sale in Karachi</h1>
+          
+            <div class="btns h-16 flex gap-x-7  whitespace-nowrap mt-5 ml-4" id="propertyTypeButtons4">
+                <button type="button" data-type="Residential" class="recentbtn7 activebtn7 border rounded-md min-w-24 h-10">Residential</button>
+        <button type="button" data-type="Plot" class="recentbtn7 border rounded-md min-w-24 h-10">Plot</button>
+         <button type="button" data-type="Commercial" class="recentbtn7 border rounded-md min-w-24 h-10">Commercial</button>
+          </div>
+
+      </div>
+      <div class="card-container overflow-x-auto whitespace-nowrap mt-1 relative ml-4 lg:ml-0 overflow-hidden">
+    
+        <div class="hidden left7 h-80 w-16 lg:flex items-center cursor-pointer bg-white absolute left-0 top-0 bottom-0 z-10">
+            <img class="w-12 mx-auto" src="{{ sell_message.images.url }}" alt="">
+        </div>
+
+        <div class="hidden lg:flex right7 h-80 w-16 items-center bg-white absolute cursor-pointer right-0 top-0 bottom-0 z-10">
+            <img class="w-12 mx-auto" src="/static/images/right.svg" alt="">
+        </div>
+
+        <div id="cardContainer4" class="karachicards w-full lg:w-[93%] lg:max-w-[93%] lg:items-center gap-4 inline-flex lg:ml-[4.5rem] lg:overflow-hidden whitespace-nowrap">
+
+            <!-- Card 1 -->
+            {% for o in sell_messages %}
+            {% if o.name_of_prop %}
+                <a href="{% url 'n' o.name_of_prop %}">
+                    {% if o.city == 'kar' %}
+                        <div class="min-h-80 h-80 w-60 border min-w-60 rounded overflow-hidden shadow-lg hover:shadow-xl" data-property-type="{{ o.property_type }}">
+                            <img class="w-full" src="{{ o.images.url }}" alt="Property Image">
+                            <div class="px-2 py-2">
+                                <div class="mb-2">
+                                    <h2 class="text-sm font-bold text-gray-900">{{ o.name_of_prop }}</h2>
+                                </div>
+                                <div class="flex justify-around">
+                                    <div class="flex items-center mr-3">
+                                        <img src="/static/images/bed.svg"/>
+                                        <p class="ml-1 text-sm font-medium text-gray-700">{{ o.rooms }}</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <img src="/static/images/washroom.svg" />
+                                        <p class="ml-1 text-sm font-medium text-gray-700">{{ o.baths }}</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <img src="/static/images/area.svg"/>
+                                        <p class="ml-1 text-sm font-medium text-gray-700">{{ o.size }}</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <p class="text-2xl font-extrabold text-blue-800">{{ o.price }}</p>
+                                </div>
+                            </div>
+                            <div class="px-2 flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">Agent Name</p>
+                                        <p class="text-xs text-gray-600">Real Estate Agent</p>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    {% endif %}
+                </a>
+            {% endif %}
+        {% endfor %}
+            </div>
+            </div>
+            
+            
+            <!-- End of Card 1 -->
+
+            <!-- Add more cards here if needed -->
+
+        </div>
+    </div>
+
+    <div class="flex items-center mt-6 transition duration-500 ease-in-out hover:underline ml-4 mb-20">
+        <a href="/insidebuy1?city=kar">View more</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 48 48">
+          <path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M19 12L31 24L19 36"/>
+        </svg>
+      </div>
+
+    </div>
+
+{% endblock %}

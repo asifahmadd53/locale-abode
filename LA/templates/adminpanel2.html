@@ -1,0 +1,652 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adminpanel</title>
+    <link rel="stylesheet" href="/static/style2.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    {% tailwind_css %}
+    
+   <div class="main">
+        
+
+      <button data-drawer-target="cta-button-sidebar" data-drawer-toggle="cta-button-sidebar" aria-controls="cta-button-sidebar" type="button" class="togglebtn inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 ">
+
+          <svg class="w-6 h-6 svg" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+          </svg>
+       </button>
+       
+       <aside id="cta-button-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-y-full sm:translate-x-0" aria-label="Sidebar">
+          <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-600">
+             <ul class="space-y-2 font-medium">
+                <li>
+                   <a href="#" onclick="showPage('page1')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                         <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
+                         <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
+                      </svg>
+                      <span class="ms-3">Dashboard</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page1')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                         <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
+                      </svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Home</span>
+                      <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page2')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                         <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
+                      </svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Inbox</span>
+                      <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page3')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                         <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
+                      </svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Agents</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page4')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                         <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
+                      </svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Properties</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page5')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                          <path  d="M12 14v8H4a8 8 0 0 1 8-8m0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6m9 4h1v5h-8v-5h1v-1a3 3 0 1 1 6 0zm-2 0v-1a1 1 0 1 0-2 0v1z"/></svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Admin</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page6')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="currentColor"><path d="M18.517 2.015H7.884c-1.038 0-2.445-.183-3.165.744c-.427.549-.427 1.36-.427 2.98c0 1.299 1.747 2.272 1.728 2.77c-.02.5-1.728 1.497-1.728 2.827v6.195c0 .594-.28 1.053-.532 1.577c-.625 1.296-.938 1.944-.655 2.418s.98.474 2.378.474h10.37c1.818 0 2.726 0 3.29-.585c.565-.586.565-1.528.565-3.412V6.483c0-.593.28-1.053.532-1.576c.625-1.296.938-1.945.655-2.419c-.282-.473-.98-.473-2.378-.473M15 18H9"/><path d="M13.5 7.5a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0m-3.609 4.056c-.55.316-1.992.96-1.114 1.768c.43.394.907.676 1.508.676h3.43c.6 0 1.079-.282 1.508-.676c.879-.807-.564-1.453-1.114-1.768a4.28 4.28 0 0 0-4.218 0"/></g></svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Wanted</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page7')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M5.504 41.251H42.5V28.153M7.434 37.688L22.424 22.7l5.108 5.108L42.5 12.84v11.056M31.359 12.839H42.5"/><rect width="13.13" height="11.358" x="5.5" y="12.402" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" rx="2.181"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M8.562 16.188h10.067M5.5 19.974h10.067"/><circle cx="12.056" cy="8.589" r="1.84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Invest</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page8')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M5.504 41.251H42.5V28.153M7.434 37.688L22.424 22.7l5.108 5.108L42.5 12.84v11.056M31.359 12.839H42.5"/><rect width="13.13" height="11.358" x="5.5" y="12.402" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" rx="2.181"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M8.562 16.188h10.067M5.5 19.974h10.067"/><circle cx="12.056" cy="8.589" r="1.84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Invest in Properties</span>
+                   </a>
+                </li>
+               
+                
+                <li>
+                   <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
+                      </svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Sign In</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                         <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
+                         <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"/>
+                         <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z"/>
+                      </svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
+                   </a>
+                </li>
+             </ul>
+             
+                
+             </div>
+          </div>
+       </aside>
+       <div class="p-4 sm:ml-64">
+          <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+
+
+         <div id="page1" class="page">
+      
+               <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+                  <div class="p-3 bg-white shadow rounded-2xl dark:bg-gray-900">
+                     <dl class="space-y-2">
+                         <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Property Views</dt>
+                 
+                         <dd class="text-5xl font-light md:text-6xl dark:text-white">192.1k</dd>
+                 
+                         <dd class="flex items-center space-x-1 text-sm font-medium text-green-500 dark:text-green-400">
+                             <span>32k Increase</span>
+                 
+                             <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 15.25V6.75H8.75"></path>
+                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 7L6.75 17.25"></path>
+                             </svg>
+                         </dd>
+                        </dl>
+                     </div>
+         
+                     <div class="p-6 bg-white shadow rounded-2xl dark:bg-gray-900">
+                        <dl class="space-y-2">
+                            <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Property Interest</dt>
+                    
+                            <dd class="text-5xl font-light md:text-6xl dark:text-white">21%</dd>
+                    
+                            <dd class="flex items-center space-x-1 text-sm font-medium text-red-500 dark:text-red-400">
+                                <span>7% Decrease</span>
+                    
+                                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M17.25 8.75V17.25H8.75"></path>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M17 17L6.75 6.75"></path>
+                                </svg>
+                            </dd>
+                        </dl>
+                    </div>
+                    
+                   <div class="p-6 bg-white shadow rounded-2xl dark:bg-gray-900">
+            <dl class="space-y-2">
+                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Average time on page</dt>
+  
+                <dd class="text-5xl font-light md:text-6xl dark:text-white">03:12</dd>
+  
+                <dd class="flex items-center space-x-1 text-sm font-medium text-green-500 dark:text-green-400">
+                    <span>3% increase</span>
+  
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M17.25 15.25V6.75H8.75"></path>
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M17 7L6.75 17.25"></path>
+                    </svg>
+                </dd>
+            </dl>
+        </div>
+               </div>
+             
+             
+
+              
+            <div class="flex items-center justify-center container py-6 mx-auto px-4 h-[22rem] md:h-[22rem]">
+                  <canvas id="myChart"></canvas>
+              </div>
+  
+  
+  
+  
+  
+  
+  
+  
+               <div class="grid grid-cols-2 md:grid-cols-4  gap-4 mb-4">
+                  <div class="bg-white overflow-hidden shadow sm:rounded-lg dark:bg-gray-900">
+                     <div class="px-4 py-5 sm:p-6">
+                         <dl>
+                             <dt class="text-sm leading-5 font-medium text-gray-500 truncate dark:text-gray-400">Total free
+                                 servers</dt>
+                             <dd class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400">1.6M</dd>
+                         </dl>
+                     </div>
+                 </div>
+                 <div class="bg-white overflow-hidden shadow sm:rounded-lg dark:bg-gray-900">
+                  <div class="px-4 py-5 sm:p-6">
+                      <dl>
+                          <dt class="text-sm leading-5 font-medium text-gray-500 truncate dark:text-gray-400">Servers a
+                              month</dt>
+                          <dd class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400">19.2K
+                          </dd>
+                      </dl>
+                  </div>
+              </div>
+              <div class="bg-white overflow-hidden shadow sm:rounded-lg dark:bg-gray-900">
+               <div class="px-4 py-5 sm:p-6">
+                   <dl>
+                       <dt class="text-sm leading-5 font-medium text-gray-500 truncate dark:text-gray-400">Servers a
+                           week</dt>
+                       <dd class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400">4.9K</dd>
+                   </dl>
+               </div>
+           </div>
+           <div class="bg-white overflow-hidden shadow sm:rounded-lg dark:bg-gray-900">
+            <div class="px-4 py-5 sm:p-6">
+                <dl>
+                    <dt class="text-sm leading-5 font-medium text-gray-500 truncate dark:text-gray-400">Total users
+                    </dt>
+                    <dd class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400">166.7K
+                    </dd>
+                </dl>
+            </div>
+        </div>
+               </div>
+
+               <div class="w-full  px-2 ">
+                  <div class="rounded-lg shadow-sm mb-4">
+                      <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
+                          <div class="px-3 pt-8 pb-10 text-center relative z-10">
+                              <h4 class="text-sm uppercase text-gray-500 leading-tight">Comments</h4>
+                              <h3 class="text-3xl text-gray-700 font-semibold leading-tight my-3">8,028</h3>
+                              <p class="text-xs text-green-500 leading-tight">▲ 8.2%</p>
+                          </div>
+                          <div class="absolute bottom-0 inset-x-0">
+                              <canvas id="chart3" height="70"></canvas>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="rounded-lg shadow-sm mb-4">
+                      <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
+                          <div class="px-3 pt-8 pb-10 text-center relative z-10">
+                              <h4 class="text-sm uppercase text-gray-500 leading-tight">Comments</h4>
+                              <h3 class="text-3xl text-gray-700 font-semibold leading-tight my-3">8,028</h3>
+                              <p class="text-xs text-green-500 leading-tight">▲ 8.2%</p>
+                          </div>
+                          <div class="absolute bottom-0 inset-x-0">
+                              <canvas id="chart3" height="70"></canvas>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="rounded-lg shadow-sm mb-4">
+                      <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
+                          <div class="px-3 pt-8 pb-10 text-center relative z-10">
+                              <h4 class="text-sm uppercase text-gray-500 leading-tight">Comments</h4>
+                              <h3 class="text-3xl text-gray-700 font-semibold leading-tight my-3">8,028</h3>
+                              <p class="text-xs text-green-500 leading-tight">▲ 8.2%</p>
+                          </div>
+                          <div class="absolute bottom-0 inset-x-0">
+                              <canvas id="chart3" height="70"></canvas>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+               <div class="grid grid-cols-3 gap-4">
+                  <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
+                     <p class="text-2xl text-gray-400 dark:text-gray-500">
+                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                        </svg>
+                     </p>
+                  </div>
+                  <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
+                     <p class="text-2xl text-gray-400 dark:text-gray-500">
+                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                        </svg>
+                     </p>
+                  </div>
+                  <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
+                     <p class="text-2xl text-gray-400 dark:text-gray-500">
+                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                        </svg>
+                     </p>
+                  </div>
+                  
+               </div>
+             
+               
+            </div>
+            
+
+            <div id="page2" class="page">
+               <h1 class="text-3xl font-bold py-10 text-center w-full">Messages</h1>
+               <div class="flex flex-wrap justify-center mt-5">
+                {% for i in messages %}
+                <div id="message-card" class="border-2 border-black w-80 rounded-md m-5 p-4 h-auto">
+                    <h1><span>Name: </span>{{ i.name }}</h1>
+                    <h1><span>Phone No: </span>{{ i.phone_number }}</h1>
+                    <h1><span>Email: </span>{{ i.email }}</h1>
+                    <p><span>Message: </span>{{ i.message }}</p>
+                    <button id="delete-button" class="w-[80%] bg-red-800 text-white rounded-md m-4 p-2">Delete Message</button>
+                </div>
+                
+                {% endfor %}
+                
+            </div>
+            
+            </div>
+
+
+
+<div id="page3" class="page">
+   <div class="flex flex-wrap justify-center mt-10">
+
+      <!-- card 1 -->
+      <section class="mb-2 border bg-neutral-100 p-4 rounded-lg w-96 m-8">
+          <div class="mx-auto">
+              <div class="card md:flex max-w-lg">
+                  <div class="w-20 h-20 mx-auto mb-6 md:mr-6 flex-shrink-0">
+                      <img class="object-cover rounded-full"
+                          src="https://tailwindflex.com/public/images/user.png">
+                  </div>
+                  <div class="flex-grow text-center md:text-left">
+                      <p class="font-bold">Real Estate Agent</p>
+                      <h3 class="text-xl heading">Muhammad Ammaz Rehan</h3>
+                      <p class="mt-2 mb-3">Muhammad Ammaz is a Real Estate Agent, primarily specializing in
+                          property transactions.</p>
+
+                      <div>
+                          <Button class="w-[80%] bg-slate-700 text-white rounded-md p-2">Remove agent</Button>
+
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- card 2 -->
+      <section class="mb-2 border  w-96 p-4 rounded-lg bg-neutral-100 m-8">
+          <div class="mx-auto">
+              <div class="card md:flex max-w-lg">
+                  <div class="w-20 h-20 mx-auto mb-6 md:mr-6 flex-shrink-0">
+                      <img class="object-cover rounded-full"
+                          src="https://tailwindflex.com/public/images/user.png">
+                  </div>
+                  <div class="flex-grow text-center md:text-left">
+                      <p class="font-bold">Real Estate Agent</p>
+                      <h3 class="text-xl heading">Muhammad Zain</h3>
+                      <p class="mt-2 mb-3">Muhammad Zain is a Real Estate Agent, specializing in property
+                          transactions.</p>
+
+                      <div>
+                          <Button class="w-[80%] bg-slate-700 text-white rounded-md p-2">Remove agent</Button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- card 3 -->
+      <section class="mb-2 border  w-96 p-4 rounded-lg bg-neutral-100 m-8">
+          <div class="mx-auto">
+              <div class="card md:flex max-w-lg">
+                  <div class="w-20 h-20 mx-auto mb-6 md:mr-6 flex-shrink-0">
+                      <img class="object-cover rounded-full"
+                          src="https://tailwindflex.com/public/images/user.png">
+                  </div>
+                  <div class="flex-grow text-center md:text-left">
+                      <p class="font-bold">Real Estate Agent</p>
+                      <h3 class="text-xl heading">Muhammad Zain</h3>
+                      <p class="mt-2 mb-3">Muhammad Zain is a Real Estate Agent, specializing in property
+                          transactions.</p>
+
+                      <div>
+                          <Button class="w-[80%] bg-slate-700 text-white rounded-md p-2">Remove agent</Button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+  </div>
+</div>
+
+<div id="page4" class="page">
+   <h1 class="text-2xl text-center py-8 underline font-bold">Properties</h1>
+   <div class="flex flex-wrap justify-center mt-10 ">
+    
+    
+    {% for sell_message in sell_messages %}
+<div class="m-5 ">
+    <div class="min-h-80 h-80 w-60 min-w-60 rounded overflow-hidden shadow-lg hover:shadow-xl">
+
+        {% if sell_message.images %}
+        <div  class="overflow-hidden">
+            <img class="w-full" src="{{ sell_message.images.url }}" alt="Property Image" style="object-fit: cover; height: 100%; width: 100%;">
+        </div>
+        {% else %}
+        <p>No image available</p>
+        {% endif %}
+
+        <div class="px-2 py-2">
+            <div class="mb-2">
+                <h2 class="text-sm font-bold text-gray-900">{{sell_message.name_of_prop}}</h2>
+            </div>
+            <div class="flex justify-around">
+                <div class="flex items-center mr-3">
+                    <img src="/static/images/bed.svg" />
+                    <p class="ml-1 text-sm font-medium text-gray-700">{{sell_message.rooms}}</p>
+                </div>
+                <div class="flex items-center">
+                    <img src="/static/images/washroom.svg" />
+                    <p class="ml-1 text-sm font-medium text-gray-700">{{sell_message.baths}}</p>
+                </div>
+                <div class="flex items-center">
+                    <img src="/static/images/area.svg" />
+                    <p class="ml-1 text-sm font-medium text-gray-700">{{sell_message.area}}</p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <p class="text-2xl font-extrabold text-blue-800">{{sell_message.price}}</p>
+            </div>
+        </div>
+        <div class="px-2 flex justify-between items-center">
+            <div class="flex items-center">
+                <div>
+                    <p class="text-sm font-medium text-gray-800">Agent Name</p>
+                    <p class="text-xs text-gray-600">{{sell_message.owner_name}}</p>
+                </div>
+            </div>
+            <div class="flex">
+                <a href="tel:+1234567890" class="mr-2 rounded-full bg-gray-300 p-1 text-gray-700 hover:text-gray-800">
+                    <img src="https://img.icons8.com/color/24/null/ringer-volume.png" />
+                </a>
+                <a href="https://wa.me/1234567890" class="rounded-full bg-green-500 p-1 text-white hover:bg-green-600">
+                    <img src="https://img.icons8.com/external-those-icons-lineal-color-those-icons/24/null/external-WhatsApp-social-media-those-icons-lineal-color-those-icons.png" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+
+   
+   </div>
+</div>
+<div id="page5" class="page">
+
+   <h1 class="text-3xl font-bold py-10 text-center">Admin</h1>
+      <div class="flex items-center justify-evenly flex-col md:flex-row ">
+        <div class="border-2 border-black w-80 rounded-md m-6">
+            <h1 class="py-4 font-bold"><span class="text-red-600">Admin:</span> Muhammad Asif</h1>
+            <div class="flex flex-col items-center">
+                <button class="w-[80%] bg-slate-700 text-white rounded-md p-2">Update Admin</button>
+                <button class="w-[80%] bg-slate-700 text-white rounded-md m-4 p-2">Regeister New</button>
+            </div>
+            
+        </div>
+        <div class="border-2 border-black w-80 rounded-md m-6">
+            <h1 class="py-4 font-bold"><span class="text-red-600">Admin:</span> Muhamamd Zain</h1>
+            <div class="flex flex-col items-center">
+                
+                <button class="w-[80%] bg-red-800 text-white rounded-md m-4 p-2">Delete Admin</button>
+            </div>
+            
+        </div>
+        <div class="border-2 border-black w-80 rounded-md m-6">
+            <h1 class="py-4 font-bold"><span class="text-red-600">Admin:</span> Muhammad Hassan</h1>
+            <div class="flex flex-col items-center">
+                
+                <button class="w-[80%] bg-red-800 text-white rounded-md m-4 p-2">Delete Admin</button>
+            </div>
+            
+        </div>
+      </div>
+</div>
+<div id="page6" class="page">
+
+    <h1 class="text-3xl font-bold py-10 text-center">Wanted Messages</h1>
+    
+    <div class="flex flex-wrap justify-center mt-5">
+
+        {% for i in wanted_messages %}
+        
+        
+        <div class="border-2 border-black w-80 rounded-md m-4 p-4">
+            <h1 class="font-semibold pb-2"><span>Property Action: </span>{{i.property_action}}</h1>
+            <h1 class="font-semibold pb-2"><span>Property Type: </span>{{i.property_type}}</h1>
+            <h1 class="font-semibold pb-2"><span>Property Sub-type: </span>{{i.property_subtypes}}</h1>
+            <p class="font-semibold pb-2"><span>City: </span>{{i.city}}</p>
+            <p class="font-semibold pb-2"><span>Area: </span>{{i.area}}</p>
+            <p class="font-semibold pb-2"><span>Name: </span>{{i.name}}</p>
+            <p class="font-semibold pb-2"><span>Phone No: </span>{{i.phone_number}}</p>
+            <p class="font-semibold pb-2"><span>Details: </span>{{i.additional_details}}</p>
+            <button class="w-[80%] bg-red-800 text-white rounded-md m-4 p-2">Delete Wanted</button>
+        </div>
+        {% endfor %}
+        
+    </div>
+
+</div>
+<div id="page7" class="page">
+
+    <div class="flex items-center justify-center">
+        <!-- Author: FormBold Team -->
+        <div class="mx-auto w-full max-w-[550px] bg-white">
+            <form class="py-4 px-9 " action="{% url 'invest_message' %}" method="post" >
+                {% csrf_token %}
+                <div class="mb-5">
+                    <label for="text" class="mb-3 block text-base font-medium text-[#07074D]">
+                        Name:
+                    </label>
+                    <input type="text" name="name" id="text" 
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                </div>
+                <div class="mb-5">
+                    <label for="number" class="mb-3 block text-base font-medium text-[#07074D]">
+                        price
+                    </label>
+                    <input type="text" name="price" id="number" 
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                </div>
+    
+                <div class="mb-6 pt-4">
+                    <label class="mb-5 block text-xl font-semibold text-[#07074D]">
+                        Upload File
+                    </label>
+    
+                    <div class="mb-8">
+                        <input type="file" name="image" id="file" class="sr-only" />
+                        <label for="file"
+                            class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
+                            <div>
+                                <span class="mb-2 block text-xl font-semibold text-[#07074D]">
+                                    Drop files here
+                                </span>
+                                <span class="mb-2 block text-base font-medium text-[#6B7280]">
+                                    Or
+                                </span>
+                                <span
+                                    class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]">
+                                    Browse
+                                </span>
+                            </div>
+                        </label>
+                    </div>
+    
+                    
+    
+                    
+                </div>
+    
+                <div>
+                    <button
+                        class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                        Send File
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div id="page8" class="page">
+
+    <h1 class="text-3xl font-bold py-10 text-center">Invest Messages</h1>
+    
+    <div class="flex flex-wrap justify-center mt-5">
+
+   {% for i in invest_prop %}
+        
+        <card class="bg-white p-8 w-[32rem]"> 
+
+            <!-- Header -->
+            <header class="flex font-light text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 rotate-90 -ml-2"  viewBox="0 0 24 24" stroke="#b91c1c">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+              </svg>
+              <p>Locale Abode</p>
+            </header>
+        
+            <!-- Title -->
+            
+        
+            <!-- Tags -->
+            <p class="mt-5"> 
+              By: 
+              <a href="#" class="text-red-600">{{i.name}}</a> 
+            </p>
+            <p class="mt-5"> 
+              Email: 
+              <a href="#" class="text-red-600">{{i.email}}</a> 
+            </p>
+        
+            <p> 
+              Phone number: 
+              <a href="#" class="text-red-600"> {{i.phone_number}} </a>, 
+            
+            </p>
+            <p> 
+              City: 
+              <a href="#" class="text-red-600"> {{i.city}} </a>, 
+            
+            </p>
+        
+            <!-- Description -->
+            <h3 class="font-bold text-xl mt-8"> Message </h3>
+            <p class="font-light"> {{i.message}} </p>
+        
+            <!-- Button -->
+            <button class="bg-red-600 text-white font-semibold py-2 px-5 text-sm mt-6 inline-flex items-center group">
+              <p> Delete Invest Message </p>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-2 delay-100 duration-200 ease-in-out" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+        
+          </card>
+          {% endfor %} 
+
+    </div>
+
+</div>
+             </div>
+
+             
+       </div>
+
+
+</div>
+
+</body>
+<script src="/static/script5.js"></script>
+</html>

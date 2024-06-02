@@ -1,0 +1,727 @@
+{% extends "base.html" %}
+{% block start %}
+
+      <div class="page1 min-w-full w-full h-screen max-w-full md:h-screen ">
+        <img class="object-cover w-full h-full" src="/static/images/mainimg.jpg" alt="">
+        <div class="imgcontent absolute inset-0">
+        <div>
+            <div class="leftside w-full h-screen pt-16 flex flex-col items-center">
+              <div class="container px-3 lg:px-0 min-h-screen md:mt-2 mt-0 ">
+                <h1 class="text-white  xl:pl-2 pt-3 md:pt-0 text-[2.2rem] md:text-[3rem] lg:text-[4rem] font-bold w-full lg:w-[90%]">We'll help you find a <span class="text-[#F26828]">place</span> you'll love</h1>
+                <p class="text-[1rem] md:text-xl text-white md:w-[70%] lg:pl-2">Find a variety of properties that suit you very easily, forget all difficulties in finding a residence for you</p>
+
+            
+                <div class="flex gap-5 mt-4 items-center justify-center ">
+                  <div class="flex bg-[#ffffff17] backdrop-blur-md rounded-md" >
+                    <li
+                    class="p-4 lg:px-8 relative flex items-center space-x-1"
+                    x-data="{ open: false }"
+                    @mouseenter="open = true"
+                    @mouseleave="open = false"                            
+                >
+                    <a
+                        class="text-slate-800 hover:text-slate-900"
+                        href="#0"
+                        :aria-expanded="open"
+                    ><Button class="text-white mainbtn w-20 h-8 rounded-sm text-center border-b-2 border-b-[#F26828]">Buy</Button></a>
+                    <button
+                        class="shrink-0 p-1"
+                        :aria-expanded="open"
+                        @click.prevent="open = !open"
+                    >
+                        <span class="sr-only">Show submenu for "Flyout Menu"</span>
+                    </button>
+                    <!-- 2nd level menu -->
+                    <ul
+                        class="origin-top-right absolute top-full left-1/2 -translate-x-1/2 w-full bg-white border border-slate-200 p-2 rounded-lg shadow-xl [&[x-cloak]]:hidden"
+                        x-show="open"
+                        x-transition:enter="transition ease-out duration-200 transform"
+                        x-transition:enter-start="opacity-0 -translate-y-2"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-out duration-200"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        x-cloak
+                        @focusout="await $nextTick();!$el.contains($focus.focused()) && (open = false)"
+                    >
+                        <li>
+                            <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="{% url 'insidebuy1' 'isl' %}">
+
+                                <span class="whitespace-nowrap">Islamabad</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="{% url 'insidebuy1' 'lhr' %}">
+                                
+                                <span class="whitespace-nowrap">Lahore</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="{% url 'insidebuy1' 'swl' %}">
+
+                                <span class="whitespace-nowrap">Sahiwal</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="{% url 'insidebuy1' 'psh' %}">
+                                
+                                <span class="whitespace-nowrap">Peshawar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="{% url 'insidebuy1' 'kar' %}">
+                                
+                                <span class="whitespace-nowrap">Karachi</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                  <li
+                    class="p-4 lg:px-8 relative flex items-center space-x-1"
+                    x-data="{ open: false }"
+                    @mouseenter="open = true"
+                    @mouseleave="open = false"                            
+                >
+                    <a
+                        class="text-slate-800 hover:text-slate-900"
+                        href="#0"
+                        :aria-expanded="open"
+                    ><Button class="text-white mainbtn w-20 h-8 rounded-sm text-center border-b-2 border-b-[#F26828]">Rent</Button></a>
+                    <button
+                        class="shrink-0 p-1"
+                        :aria-expanded="open"
+                        @click.prevent="open = !open"
+                    >
+                    </button>
+                    <!-- 2nd level menu -->
+                    <ul
+                        class="origin-top-right absolute top-full left-1/2 -translate-x-1/2 w-full bg-white border border-slate-200 p-2 rounded-lg shadow-xl [&[x-cloak]]:hidden"
+                        x-show="open"
+                        x-transition:enter="transition ease-out duration-200 transform"
+                        x-transition:enter-start="opacity-0 -translate-y-2"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-out duration-200"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        x-cloak
+                        @focusout="await $nextTick();!$el.contains($focus.focused()) && (open = false)"
+                    >
+                        <li>
+                            <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="{% url 'insiderent1' 'isl' %}">
+
+                                <span class="whitespace-nowrap">Islamabad</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="{% url 'insiderent1' 'lhr' %}">
+                                
+                                <span class="whitespace-nowrap">Lahore</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="{% url 'insiderent1' 'swl' %}">
+
+                                <span class="whitespace-nowrap">Sahiwal</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="{% url 'insiderent1' 'psh' %}">
+                                
+                                <span class="whitespace-nowrap">Peshawar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="{% url 'insiderent1' 'kar' %}">
+                                
+                                <span class="whitespace-nowrap">Karachi</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                  </div>
+                  
+                  
+</div>
+
+                <form class="flex flex-col justify-center items-center" action="">
+                    <div class="flex items-center justify-center p-5 ">
+                      
+                            
+                            
+                            <!-- Buy City List 
+                            <div id="buy-city-list" class="bg-none bg-transparent focus:none pl-2 text-base font-semibold outline-0">
+                                <ul>
+                                    <li><a href="{% url 'insidebuy1' 'isl' %}">Islamabad</a></li>
+                                    <li><a href="{% url 'insidebuy1' 'lhr' %}">Lahore</a></li>
+                                    <li><a href="{% url 'insidebuy1' 'swl' %}">Sahiwal</a></li>
+                                    <li><a href="{% url 'insidebuy1' 'psh' %}">Peshawar</a></li>
+                                    <li><a href="{% url 'insidebuy1' 'kar' %}">Karachi</a></li>
+                                </ul>
+                            </div>-->
+                            
+                            <!-- Rent City List (Initially Hidden) 
+                            <div id="rent-city-list" class="bg-none bg-transparent focus:none pl-2 text-base font-semibold outline-0 hidden">
+                                <ul>
+                                    <li><a href="{% url 'insiderent1' 'isl' %}">Islamabad</a></li>
+                                    <li><a href="{% url 'insiderent1' 'lhr' %}">Lahore</a></li>
+                                    <li><a href="{% url 'insiderent1' 'swl' %}">Sahiwal</a></li>
+                                    <li><a href="{% url 'insiderent1' 'psh' %}">Peshawar</a></li>
+                                    <li><a href="{% url 'insiderent1' 'kar' %}">Karachi</a></li>
+                                </ul>
+                            </div>-->
+
+                        </div>
+       
+                    </div>
+                </form>
+               
+            </div>
+           
+            </div>
+            
+            </div>
+        </div>
+        </div>
+
+        <div class="page2 h-auto min-w-full w-full max-w-full mt-6 lg:mt-0">
+          <div class="flex items-center justify-evenly h-full w-full ">
+          <div class="flex flex-col  md:items-center md:justify-center lg:justify-evenly md:w-full lg:flex-row ml-4 md:ml-0  ">
+            
+            <div class="flex flex-col  lg:justify-evenly md:flex-col md:justify-center md:items-center  md:pb-6 md:mt-12 lg:gap-y-12">
+              <div ><img class="w-60 md:w-72 object-cover  rounded-md h-60 lg:h-72" src="/static/images/view-building-with-cartoon-style-architecture (1).png" alt=""></div>
+              <div class="text-start md:text-center md:flex md:flex-col md:items-center"> <!-- Added md:text-center to center align on medium and large screens -->
+                  <h2 class='font-bold text-xl mb-2 md:mt-5 md:text-[2.4rem] lg:mb-8'>Invest</h2>
+                  <p class="w-full md:w-96 lg:w-[30rem]">Invest in fully legal Imarat projects. <span class="hidden lg:block">Our “Ownerships & Approvals, Demand & Delivery” approach ensures fantastic returns with full risk mitigation</span> </span></p>
+                  
+                  <div class="border w-32 h-8 mt-5 rounded-md text-white py-1 text-center bg-[#303233]">
+                    <a href="/invest/">INVEST NOW</a>
+                </div>
+                
+              </div>
+          </div>
+          
+        
+          <div class="flex flex-col  justify-evenly md:flex-col md:justify-center md:items-center  mt-6  md:mt-12 md:pb-6 lg:gap-y-12">
+            <div><img class="w-60 md:w-72 object-cover object-center rounded-md h-60 lg:h-72" src="/static/images/41870.jpg" alt=""></div>
+            <div class="text-start md:text-center md:flex md:flex-col md:items-center "> <!-- Added md:text-center to center align on medium and large screens -->
+                <h2 class='font-bold text-xl md:mt-5 mb-2 md:text-[2.4rem] md:mb-8'>WANTED</h2>
+                <p class="w-full md:w-96 lg:w-[30rem]">In just 3 clicks activate a team of experts to find the properties you need</span></p>
+                
+                <div class="border w-32 h-8 mt-5 lg:mt-10 rounded-md text-white py-[2px] text-center bg-[#303233] "><a href="/wanted/">WANTED</a></div>
+            </div>
+        </div>
+              
+          </div>
+          </div>
+
+        </div>
+        
+
+        </div>
+        
+
+
+
+        <div class="page3 w-full h-screen  min-h-screen flex justify-center items-center ">
+          <div class="cards-box relative flex flex-col md:flex-row items-center justify-center gap-20 m-4   min-w-[70%] w-full lg:w-[85%] lg:h-[75%] rounded-lg md:justify-evenly ">
+              
+              
+              
+              <div class="flex w-full gap-10 items-center justify-center md:flex-col md:border rounded-lg md:h-80 lg:h-96 md:w-56 md:m-4 md:bg-white mt-5 lg:w-64 lg:shadow-inner duration-500 transition-all">
+                  <img class="min-w-32 w-32 " src="/static/images/buy.png" alt="">
+                  <div class="">
+                      <h1 class="font-bold text-xl">Buy a property</h1>
+                      <p class="w-52 min-w-24">Find where “perfect”
+                        meets “happy”</p>
+                      <div class="border border-black w-20 cur text-center rounded-md mt-3 text-sm py-1 ">
+                          <a href="/buy/">BROWSE</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="flex items-center justify-center md:flex-col md:border rounded-lg md:h-80 lg:h-96 md:w-56 md:m-4 md:bg-white mt-5 lg:w-64 lg:shadow-inner  duration-500 transition-all">
+                  <div class="flex flex-row-reverse md:flex-col">
+                      <img class="min-w-32 w-44 relative bottom-5" src="/static/images/sell.png" alt="">
+                      <div class="">
+                          <h1 class="font-bold text-xl">Sell a property</h1>
+                          <p class="w-40 min-w-24">Get the best value
+                            in any economy</p>
+                          <div class="border border-black w-32 text-center rounded-md mt-5 text-sm py-1">
+                              <a href="/sell/">ADD DETAILS</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="card flex gap-10 mt-[-3rem] md:mt-0 items-center justify-center md:flex-col md:border rounded-lg md:h-[21rem] lg:h-96 b-2 md:w-56 md:m-4 md:bg-white lg:w-64 lg:shadow-inner     duration-500 transition-all ">
+                
+                  <img class="min-w-32 w-40" src="/static/images/rent.png" alt="">
+                  <div class="md:mt-[-1rem]">
+                      <h1 class="font-bold text-xl">Rent a property</h1>
+                      <p class="w-40 min-w-24">Live where you
+                        can love</p>
+                      <div class="border border-black w-32 text-center rounded-md mt-5 text-sm py-1">
+                          <a href="/rentproperty/">FIND RENATALS</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+
+
+      <div class="page3 min-w-full w-full max-w-full h-auto max-h-screen px-4">
+        <div class="lg:ml-16">
+            <h1 class="text-xl font-bold">Recent properties for Sale</h1>
+            <div class="btns h-16 flex gap-x-7 overflow-x-scroll md:overflow-hidden whitespace-nowrap mt-8">
+              <button id="islamabadBtn" type="button" data-city="isl" class="recentbtn activebtn border rounded-md min-w-24 h-10">Islamabad</button>
+              <button id="lahoreBtn" type="button" data-city="lhr" class="recentbtn border rounded-md min-w-24 h-10">Lahore</button>
+              <button id="swlBtn" type="button" data-city="swl" class="recentbtn border rounded-md min-w-24 h-10">Sahiwal</button>
+              <button id="pshBtn" type="button" data-city="psh" class="recentbtn border rounded-md min-w-24 h-10">Peshawar</button>
+              <button id="karBtn" type="button" data-city="kar" class="recentbtn border rounded-md min-w-24 h-10">Karachi</button>
+            </div>
+        </div>
+    
+        <div class="card-container overflow-x-auto whitespace-nowrap mt-5 relative overflow-hidden">
+    
+          <div class="hidden left h-80 w-16 lg:flex items-center  bg-white absolute left-0 top-0 bottom-0 z-10">
+              <img class="w-12 mx-auto cursor-pointer" src="/static/images/left.svg" alt="">
+          </div>
+  
+          <div class="hidden lg:flex right h-80 w-16 items-center bg-white absolute  right-0 top-0 bottom-0 z-10">
+              <img class="w-12 mx-auto cursor-pointer" src="/static/images/right.svg" alt="">
+          </div>
+  
+          <div id="cityContent" class=" cards w-full lg:w-[93%] lg:max-w-[93%] lg:items-center gap-4 inline-flex lg:ml-[4.5rem] lg:overflow-hidden  whitespace-nowrap">
+    
+                <!-- Card 1 -->
+                {% for n in sell_messages %}
+                
+                {% if n.name_of_prop %}
+                    <a href="{% url 'n' n.name_of_prop %}">
+                        <div class="min-h-80 border h-80 w-60 min-w-60 rounded overflow-hidden shadow-lg hover:shadow-xl">
+                            {% if n.images %}
+                                <img class="w-full h-[50%] min-h-[50%]" src="{{ n.images.url }}" alt="{{ n.name_of_prop }}">
+                            {% else %}
+                                <p>no image found</p>
+                            {% endif %}
+                            <div class="px-2 py-2">
+                                <div class="mb-2">
+                                    <h2 class="text-sm font-bold text-gray-900">{{ n.name_of_prop }}</h2>
+                                </div>
+                                <div class="flex justify-around">
+                                    <div class="flex items-center mr-3">
+                                        <img src="/static/images/bed.svg" />
+                                        <p class="ml-1 text-sm font-medium text-gray-700">{{ n.rooms }}</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <img src="/static/images/washroom.svg" />
+                                        <p class="ml-1 text-sm font-medium text-gray-700">{{ n.baths }}</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <img src="/static/images/area.svg" />
+                                        <p class="ml-1 text-sm font-medium text-gray-700">{{ n.size }}</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <p class="text-2xl font-extrabold text-blue-800">{{ n.price }}</p>
+                                </div>
+                            </div>
+                            <div class="px-2 flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">Owner Name</p>
+                                        <p class="text-xs text-gray-600">{{ n.owner_name }}</p>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                       
+                    </a>
+                {% endif %}
+            {% endfor %}
+            
+                  </div>
+                </div>
+
+                <!-- End of Card 1 -->
+    
+                <!-- Add more cards here if needed -->
+    
+            </div>
+        </div>
+        <div class="lg:ml-16 mt-16 lg:mt-24 px-4">
+          <h1 class="text-xl font-bold">Recent properties for Rent</h1>
+          <div class="btns h-16 flex gap-x-7 overflow-x-scroll md:overflow-hidden whitespace-nowrap mt-8 overflow-y-hidden">
+            <div id="propertyTypeButtons10" class="btns h-16 flex gap-x-7  overflow-x-scroll md:overflow-hidden whitespace-nowrap mb-4">
+              <button id="islamabadBtn" type="button" data-city="isl" class="recentbtn1 activebtn1 border rounded-md min-w-24 h-10">Islamabad</button>
+              <button id="lahoreBtn" type="button" data-city="lhr" class="recentbtn1 border rounded-md min-w-24 h-10">Lahore</button>
+              <button id="swlBtn" type="button" data-city="swl" class="recentbtn1 border rounded-md min-w-24 h-10">Sahiwal</button>
+              <button id="pshBtn" type="button" data-city="psh" class="recentbtn1 border rounded-md min-w-24 h-10">Peshawar</button>
+              <button id="karBtn" type="button" data-city="kar" class="recentbtn1 border rounded-md min-w-24 h-10">Karachi</button>
+         </div>
+          </div>
+      </div>
+    </div>
+    
+
+    <div class="page4 w-full h-auto min-w-full max-w-full max-h-screen px-4 ">
+
+      <div class="card-container overflow-x-auto whitespace-nowrap  relative  overflow-hidden">
+  
+        <div class="hidden left8 h-80 w-16 lg:flex items-center  bg-white absolute left-0 top-0 bottom-0 z-10">
+            <img class="w-12 mx-auto cursor-pointer" src="/static/images/left.svg" alt="">
+        </div>
+    
+        <div class="hidden lg:flex right8 h-80 w-16 items-center bg-white absolute  right-0 top-0 bottom-0 z-10">
+            <img class="w-12 mx-auto cursor-pointer" src="/static/images/right.svg" alt="">
+        </div>
+    
+        <div id="rentCityContent" class="rentcards w-full lg:w-[93%] lg:max-w-[93%] lg:items-center gap-4 inline-flex lg:ml-[4.5rem] lg:overflow-hidden  whitespace-nowrap">
+    
+            <!-- Card 1 -->
+            {% for q in rent_messages %}
+
+            {% if q.name_of_prop %}
+            <a href="{% url 'rent' q.name_of_prop %}">
+  <div class="min-h-80 border h-80 w-60 min-w-60 rounded overflow-hidden shadow-lg hover:shadow-xl">
+    <img class="w-full h-[50%] min-h-[50%]" src="{{ q.images.url }}" alt="Property Image">
+    <div class="px-2 py-2">
+      <div class="mb-2">
+        <h2 class="text-sm font-bold text-gray-900">{{a.name_of_prop}}</h2>
+        <!--<div class="flex items-center">
+          <div class="mr-2 rounded-full bg-blue-600 py-1 px-2 text-xs font-medium text-white"><?php echo $property_type[0]->name; ?></div>
+          <div class="rounded-full bg-yellow-500 py-1 px-2 text-xs font-medium text-white"><?php foreach ($property_categories as $category) { echo $category->name . ', '; } ?></div>
+        </div>-->
+      </div>
+      <div class="flex justify-around">
+        <div class="flex items-center mr-3">
+          <img src="/static/images/bed.svg"/>
+          <p class="ml-1 text-sm font-medium text-gray-700">{{q.rooms}}</p>
+        </div>
+        <div class="flex items-center">
+          <img src="/static/images/washroom.svg" />
+          <p class="ml-1 text-sm font-medium text-gray-700">{{q.baths}}</p>
+        </div>
+        <div class="flex items-center">
+          <img src="/static/images/area.svg"/>
+          <p class="ml-1 text-sm font-medium text-gray-700">{{q.size}} sqm</p>
+        </div>
+      </div>
+      <div class="mt-4">
+        <p class="text-2xl font-extrabold text-blue-800">{{q.price}}</p>
+      </div>
+    </div>
+    <div class="px-2 flex justify-between items-center">
+      <div class="flex items-center">
+        
+        <div>
+          <p class="text-sm font-medium text-gray-800">Owner Name</p>
+          <p class="text-xs text-gray-600">{{ q.owner_name }}</p>
+      </div>
+      </div>
+      
+  </div>
+  </div>
+</a>
+{% endif %}
+
+            {% endfor %}
+              </div>
+            </div>
+              
+  
+              <!-- End of Card 1 -->
+  
+              <!-- Add more cards here if needed -->
+  
+          </div>
+      </div>
+     
+      <div class="animted max-h-24 lg:h-36 w-full flex items-center text-[2.5rem] lg:text-[4rem] mt-44 whitespace-nowrap overflow-x-auto overflow-y-hidden gap-7">
+        <h1 class="inline-block  ">Don't dream about owing a home. Let's make it <span class="text-[#F26828]">Happen.</span></h1>
+        <h1 class="inline-block ">  Don't dream about owing a home. Let's make it <span class="text-[#F26828]">Happen.</span></h1>
+        <h1 class="inline-block ">  Don't dream about owing a home. Let's make it <span class="text-[#F26828]">Happen.</span></h1>
+        <h1 class="inline-block ">  Don't dream about owing a home. Let's make it <span class="text-[#F26828]">Happen.</span></h1>
+       </div>
+
+      
+  </div>
+  
+  <div class="page6 px-4  w-full h-screen mt-14">
+   
+   <div class="flex flex-col gap-12">
+    <h1 class="font-bold text-center text-3xl mt-5">Meet The Admins</h1>
+    <p class="text-center">Meet our team of professional Admins, who will help you find your dream house.</p>
+</div>
+
+<div class="overflow-x-auto flex items-center  md:justify-evenly gap-x-5 w-full whitespace-nowrap mt-12">
+  <div class=" gap-6 flex items-center justify-center w-full rounded-lg shadow-lg  md:min-w-96 max-w-80 h-72  min-w-[85%]">
+    <div
+      class="bg-gray-700 relative shadow-xl overflow-hidden hover:shadow-2xl group rounded-xl p-5 transition-all duration-500 transform h-full flex justify-center items-center pb-6">
+      <div class="flex items-center gap-4 ">
+        <img src="/static/images/WhatsApp Image 2024-05-31 at 20.23.58_beab77ce.jpg"
+        class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-center object-cover rounded-full transition-all duration-500 delay-500 transform "
+      />
+        <div class="w-fit transition-all transform duration-500">
+          <h1 class="text-gray-600 dark:text-gray-200 font-bold">
+            Muhammad Asif
+          </h1>
+          <p class="text-gray-400">CEO</p>
+          <a
+            class="text-xs text-gray-500 dark:text-gray-200 group-hover:opacity-100 opacity-0 transform transition-all delay-300 duration-500">
+            asifahmadd53@gmail.com
+          </a>
+        </div>
+      </div>
+      <div class="absolute group-hover:bottom-1 delay-300 -bottom-16 transition-all duration-500 bg-gray-600 dark:bg-gray-100 right-1 rounded-lg">
+        <div class="flex justify-evenly items-center gap-2 p-1 text-2xl text-white dark:text-gray-600">
+          <svg viewBox="0 0 1024 1024" fill="currentColor" height="1em" width="1em">
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm215.3 337.7c.3 4.7.3 9.6.3 14.4 0 146.8-111.8 315.9-316.1 315.9-63 0-121.4-18.3-170.6-49.8 9 1 17.6 1.4 26.8 1.4 52 0 99.8-17.6 137.9-47.4-48.8-1-89.8-33-103.8-77 17.1 2.5 32.5 2.5 50.1-2a111 111 0 01-88.9-109v-1.4c14.7 8.3 32 13.4 50.1 14.1a111.13 111.13 0 01-49.5-92.4c0-20.7 5.4-39.6 15.1-56a315.28 315.28 0 00229 116.1C492 353.1 548.4 292 616.2 292c32 0 60.8 13.4 81.1 35 25.1-4.7 49.1-14.1 70.5-26.7-8.3 25.7-25.7 47.4-48.8 61.1 22.4-2.4 44-8.6 64-17.3-15.1 22.2-34 41.9-55.7 57.6z" />
+          </svg>
+          <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
+            <path
+              d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+          </svg>
+          <a href="https://www.linkedin.com/in/muhammad-asif-10036b265/" target="_blank"> <svg viewBox="0 0 960 1000" fill="currentColor" height="1em" width="1em">
+            <path
+              d="M480 20c133.333 0 246.667 46.667 340 140s140 206.667 140 340c0 132-46.667 245-140 339S613.333 980 480 980c-132 0-245-47-339-141S0 632 0 500c0-133.333 47-246.667 141-340S348 20 480 20M362 698V386h-96v312h96m-48-352c34.667 0 52-16 52-48s-17.333-48-52-48c-14.667 0-27 4.667-37 14s-15 20.667-15 34c0 32 17.333 48 52 48m404 352V514c0-44-10.333-77.667-31-101s-47.667-35-81-35c-44 0-76 16.667-96 50h-2l-6-42h-84c1.333 18.667 2 52 2 100v212h98V518c0-12 1.333-20 4-24 8-25.333 24.667-38 50-38 32 0 48 22.667 48 68v174h98" />
+          </svg></a>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gap-6 flex items-center justify-center w-full rounded-lg shadow-lg  md:min-w-96 max-w-80 h-72  min-w-[85%]">
+    <div
+      class="bg-gray-700 relative shadow-xl overflow-hidden hover:shadow-2xl group rounded-xl p-5 transition-all duration-500 transform h-full flex justify-center items-center pb-6">
+      <div class="flex items-center gap-4">
+        <img src="/static/images/WhatsApp Image 2024-05-31 at 20.07.06_741587d9.jpg"
+        class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-center object-cover rounded-full transition-all duration-500 delay-500 transform"
+      />
+        <div class="w-fit transition-all transform duration-500">
+          <h1 class="text-gray-600 dark:text-gray-200 font-bold">
+            Komal
+          </h1>
+          <p class="text-gray-400">Manager</p>
+          <a
+            class="text-xs text-gray-500 dark:text-gray-200 group-hover:opacity-100 opacity-0 transform transition-all delay-300 duration-500">
+            komalnaseem147@gmail.com
+          </a>
+        </div>
+      </div>
+      <div class="absolute group-hover:bottom-1 delay-300 -bottom-16 transition-all duration-500 bg-gray-600 dark:bg-gray-100 right-1 rounded-lg">
+        <div class="flex justify-evenly items-center gap-2 p-1 text-2xl text-white dark:text-gray-600">
+          <svg viewBox="0 0 1024 1024" fill="currentColor" height="1em" width="1em">
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm215.3 337.7c.3 4.7.3 9.6.3 14.4 0 146.8-111.8 315.9-316.1 315.9-63 0-121.4-18.3-170.6-49.8 9 1 17.6 1.4 26.8 1.4 52 0 99.8-17.6 137.9-47.4-48.8-1-89.8-33-103.8-77 17.1 2.5 32.5 2.5 50.1-2a111 111 0 01-88.9-109v-1.4c14.7 8.3 32 13.4 50.1 14.1a111.13 111.13 0 01-49.5-92.4c0-20.7 5.4-39.6 15.1-56a315.28 315.28 0 00229 116.1C492 353.1 548.4 292 616.2 292c32 0 60.8 13.4 81.1 35 25.1-4.7 49.1-14.1 70.5-26.7-8.3 25.7-25.7 47.4-48.8 61.1 22.4-2.4 44-8.6 64-17.3-15.1 22.2-34 41.9-55.7 57.6z" />
+          </svg>
+          <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
+            <path
+              d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+          </svg>
+          <a href="https://www.linkedin.com/in/komal003 " target="_blank"><svg viewBox="0 0 960 1000" fill="currentColor" height="1em" width="1em">
+            <path
+              d="M480 20c133.333 0 246.667 46.667 340 140s140 206.667 140 340c0 132-46.667 245-140 339S613.333 980 480 980c-132 0-245-47-339-141S0 632 0 500c0-133.333 47-246.667 141-340S348 20 480 20M362 698V386h-96v312h96m-48-352c34.667 0 52-16 52-48s-17.333-48-52-48c-14.667 0-27 4.667-37 14s-15 20.667-15 34c0 32 17.333 48 52 48m404 352V514c0-44-10.333-77.667-31-101s-47.667-35-81-35c-44 0-76 16.667-96 50h-2l-6-42h-84c1.333 18.667 2 52 2 100v212h98V518c0-12 1.333-20 4-24 8-25.333 24.667-38 50-38 32 0 48 22.667 48 68v174h98" />
+          </svg></a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class=" gap-6 flex items-center justify-center w-full bg-white rounded-lg shadow-lg  md:min-w-96 max-w-80 h-72  min-w-[85%] ">
+    <div
+      class="bg-gray-100 dark:bg-gray-700 relative shadow-xl overflow-hidden hover:shadow-2xl group rounded-xl p-5 transition-all duration-500 transform h-full flex justify-center items-center pb-6">
+      <div class="flex items-center gap-4">
+        <img src="/static/images/WhatsApp Image 2024-05-31 at 23.19.22_aba5ad42.jpg"
+        class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-center object-cover rounded-full transition-all duration-500 delay-500 transform"
+      />
+        <div class="w-fit transition-all transform duration-500">
+          <h1 class="text-gray-600 dark:text-gray-200 font-bold">
+            Muhammad Zain
+          </h1>
+          <p class="text-gray-400">Real estate agent</p>
+          <a
+            class="text-xs text-gray-500 dark:text-gray-200 group-hover:opacity-100 opacity-0 transform transition-all delay-300 duration-500">
+            muhammadzainz754@gmail.com
+          </a>
+        </div>
+      </div>
+      <div class="absolute group-hover:bottom-1 delay-300 -bottom-16 transition-all duration-500 bg-gray-600 dark:bg-gray-100 right-1 rounded-lg">
+        <div class="flex justify-evenly items-center gap-2 p-1 text-2xl text-white dark:text-gray-600">
+          <svg viewBox="0 0 1024 1024" fill="currentColor" height="1em" width="1em">
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm215.3 337.7c.3 4.7.3 9.6.3 14.4 0 146.8-111.8 315.9-316.1 315.9-63 0-121.4-18.3-170.6-49.8 9 1 17.6 1.4 26.8 1.4 52 0 99.8-17.6 137.9-47.4-48.8-1-89.8-33-103.8-77 17.1 2.5 32.5 2.5 50.1-2a111 111 0 01-88.9-109v-1.4c14.7 8.3 32 13.4 50.1 14.1a111.13 111.13 0 01-49.5-92.4c0-20.7 5.4-39.6 15.1-56a315.28 315.28 0 00229 116.1C492 353.1 548.4 292 616.2 292c32 0 60.8 13.4 81.1 35 25.1-4.7 49.1-14.1 70.5-26.7-8.3 25.7-25.7 47.4-48.8 61.1 22.4-2.4 44-8.6 64-17.3-15.1 22.2-34 41.9-55.7 57.6z" />
+          </svg>
+          <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
+            <path
+              d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+          </svg>
+          <a href="https://www.linkedin.com/in/muhammad-zain-ali-6499b9248?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "> <svg viewBox="0 0 960 1000" fill="currentColor" height="1em" width="1em">
+            <path
+              d="M480 20c133.333 0 246.667 46.667 340 140s140 206.667 140 340c0 132-46.667 245-140 339S613.333 980 480 980c-132 0-245-47-339-141S0 632 0 500c0-133.333 47-246.667 141-340S348 20 480 20M362 698V386h-96v312h96m-48-352c34.667 0 52-16 52-48s-17.333-48-52-48c-14.667 0-27 4.667-37 14s-15 20.667-15 34c0 32 17.333 48 52 48m404 352V514c0-44-10.333-77.667-31-101s-47.667-35-81-35c-44 0-76 16.667-96 50h-2l-6-42h-84c1.333 18.667 2 52 2 100v212h98V518c0-12 1.333-20 4-24 8-25.333 24.667-38 50-38 32 0 48 22.667 48 68v174h98" />
+          </svg></a>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+
+    <div class="text-center mt-20">
+        <h1>Become our next customer, and find your dream home</h1>
+        <div class="text-[#F26828] border-b-2 inline-block border-[#F26828]">
+            <a class="inline" target="_blank" href="https://wa.me/03116465204">Contact us: 311-646-5204</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="flex flex-col lg:flex-row lg:px-28 lg:items-center lg:justify-center lg:gap-6"> 
+    <div class="page6 w-full min-h-screen lg:min-h-auto lg:w-1/2">
+      <div class="leftside2 w-full h-full min-h-full px-2 lg:px-8 mt-10">
+        <div class="heading grid gap-6">
+          <h1 class="text-[2rem] leading-[2.5rem] lg:text-[3rem] lg:leading-[3.5rem] font-semibold">We Provide The Most Suitable And Quality Real Estate.</h1>
+          <p class="text-xl ">Discover your dream home with Locale Abode Realty, where luxury meets comfort.</p>
+        </div>
+        <div class="grid gap-8">
+          <div class="address lg:flex gap-12 items-center mt-10">
+            <img class="w-8 " src="/static/images/location.svg" alt="">
+            <div>
+              <h1 class="text-[1rem]">Office address</h1>
+              <p class="text-2xl">Model town Lahore</p>
+            </div>
+          </div>
+          <div class="phone lg:flex gap-12">
+            <img class="w-8" src="/static/images/phone.svg" alt="">
+            <div>
+              <h1 class="text-[1rem]">Office phone #</h1>
+              <p class="text-3xl text-[#F26828] font-bold"><a class="inline" target="_blank" href="https://wa.me/03116465204">311-646-5204</a>
+              </p>
+            </div>
+          </div>
+          <div class="mail lg:flex gap-12">
+            <img class="w-8" src="/static/images/mail.svg" alt="">
+            <div>
+              <h1 class="text-[1rem]">Email us</h1>
+              <p class="text-xl  text-[#F26828]"><a href="">localeabode53@gmail.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="page7 w-full h-screen lg:w-1/2">
+      <div class="w-[90%] lg:w-[35rem] m-auto bg-white rounded-lg shadow-md p-6 h-full">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Contact Form</h2>
+        <form class="flex flex-col" action="{% url 'add_message' %}" method="post" id="messageForm">
+          {% csrf_token %}
+          <input type="text" name="name" class="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#F26828] transition ease-in-out duration-150" placeholder="Full Name">
+          <input type="email" name="email" class="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#F26828] transition ease-in-out duration-150" placeholder="Email">
+          <input type="number" name="phone_number" class="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#F26828] transition ease-in-out duration-150" placeholder="Phone Number">
+          <textarea name="message" class="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#F26828] transition ease-in-out duration-150 resize-none h-40" placeholder="Message"></textarea>
+          <button type="submit" class="overflow-hidden relative w-32 p-2 h-12 bg-black text-white border-none rounded-md text-xl font-bold cursor-pointer z-10 group">
+              Submit
+              <span class="absolute w-36 h-32 -top-8 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-left"></span>
+              <span class="absolute w-36 h-32 -top-8 -left-2 bg-[#F26828]  rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-left"></span>
+              <span class="absolute w-36 h-32 -top-8 -left-2 bg-[#F26828] rotate-12 transform scale-x-0 group-hover:scale-x-50 transition-transform group-hover:duration-1000 duration-500 origin-left"></span>
+              <span class="group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-6 z-10">Thanks!</span>
+          </button>
+      </form>
+     
+      </div>
+    </div>
+  </div>
+<div class="page8 min-w-full w-full max-w-full  h-auto">
+  <section id="testimonials" aria-label="What our customers are saying" class="bg-slate-50 py-20 sm:py-32">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl md:text-center">
+        <h2 class="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">What Our Customers Are Saying</h2>
+      </div>
+      <ul role="list"
+        class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
+        <li>
+          <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+            <li>
+              <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10"><svg aria-hidden="true"
+                  width="105" height="78" class="absolute left-6 top-6 fill-slate-100">
+                  <path
+                    d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z">
+                  </path>
+                </svg>
+                <blockquote class="relative">
+                  <p class="text-lg tracking-tight text-slate-900">I love the new home I purchased through Locale Abode. The quality of the property is exceptional, and the prices are unbeatable. </p>
+                </blockquote>
+                <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
+                  <div>
+                    <div class="font-display text-base text-slate-900">Muhammad Saad Nadeem</div>
+                  </div>
+                  <div class="overflow-hidden rounded-full bg-slate-50">
+                    <img alt="" class="h-14 w-14 object-cover" style="color:transparent" src="/static/images/Screenshot 2024-05-31 200333.png">
+                  </div>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+            <li>
+              <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10"><svg aria-hidden="true"
+                  width="105" height="78" class="absolute left-6 top-6 fill-slate-100">
+                  <path
+                    d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z">
+                  </path>
+                </svg>
+                <blockquote class="relative">
+                  <p class="text-lg tracking-tight text-slate-900">As a professional, I rely on high-quality properties to suit my lifestyle. Locale Abode offers a great selection of top-notch homes that meet my standards for comfort and convenience.</p>
+                </blockquote>
+                <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
+                  <div>
+                    <div class="font-display text-base text-slate-900">Ahmad Chatha</div>
+                  </div>
+                  <div class="overflow-hidden rounded-full bg-slate-50">
+                    <img alt="" class="h-14 w-14 object-cover" style="color:transparent" src="/static/images/Screenshot 2024-05-31 200448.png">
+                  </div>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+            <li>
+              <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10"><svg aria-hidden="true"
+                  width="105" height="78" class="absolute left-6 top-6 fill-slate-100">
+                  <path
+                    d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z">
+                  </path>
+                </svg>
+                <blockquote class="relative">
+                  <p class="text-lg tracking-tight text-slate-900">The home I bought through Locale Abode fits my needs perfectly and feels amazing. I highly recommend this site to anyone looking for a quality property.</p>
+                </blockquote>
+                <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
+                  <div>
+                    <div class="font-display text-base text-slate-900">Arham Khaliq</div>
+                  </div>
+                  <div class="overflow-hidden rounded-full bg-slate-50">
+                    <img alt="" class="h-14 w-14 object-cover" style="color:transparent" src="/static/images/Screenshot 2024-05-31 200423.png">
+                  </div>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+
+  
+{% endblock  %}
+          

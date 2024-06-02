@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+        {% block start %}
+
+        <div class="page1 min-w-full w-full h-[80%] max-w-full md:h-screen flex justify-center items-center ">
+            <div class="midofpage flex flex-col w-full items-center justify-center gap-y-8 px-4 md:px-12 md:flex-row-reverse">
+                <div class="upper w-full mt-16 flex justify-center md:w-[50%]">
+                    <div class="w-[85%] md:w-full">
+                        <img src="/static/images/investimg.png" alt="">
+                    </div>
+                    
+                </div>
+                <div class="lower w-full flex flex-col items-center justify-center text-center md:text-left gap-80 md:w-[45%]">
+                    <div>
+                        <h1 class="text-2xl lg:text-3xl  mb-7 font-bold">Invest in IMARAT projects</h1>
+                        <p class=" mb-6 md:text-left text-center lg:w-[65%]">Invest in fully legal IMARAT projects. Our “Ownership, Approval, Demand & Delivery” approach ensures fantastic returns with full risk mitigation.</p>
+                        <button id="invest-button" class=" bg-slate-600 rounded-md text-white w-28 py-2">Invest now</button>
+                    </div>
+                </div>
+                
+            </div>  
+</div>
+<div id="popup-overlay1" class="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 hidden">
+    <div id="popup-content" class="max-w-xl mx-auto mt-10 flex w-[80%] flex-col border rounded-lg bg-white p-5 z-[999]">
+        <h2 class="title-font mb-1 text-lg font-medium text-gray-900">INVEST NOW</h2>
+        <p class="mb-2 leading-relaxed text-gray-600 text-sm">Please fill out the form to get more information</p>
+        <form action="{% url 'invest_prop' %}" method="post">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="name" class="text-sm leading-7 text-gray-600">Name</label>
+                <input type="text" id="name" name="name" class="w-full rounded border border-gray-300 h-8 bg-white px-2 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
+            </div>
+            <div class="mb-4">
+                <label for="email" class="text-sm leading-7 text-gray-600">Email</label>
+                <input type="email" id="email" name="email" class="w-full rounded border border-gray-300 h-8 bg-white px-2 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
+            </div>
+            <div class="mb-4">
+                <label for="phone" class="text-sm leading-7 text-gray-600">Phone No</label>
+                <input type="phone" id="phone" name="phone" class="w-full rounded border border-gray-300 h-8 bg-white px-2 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
+            </div>
+            <div class="mb-4">
+                <label for="city" class="text-sm leading-7 text-gray-600">City</label>
+                <input type="text" id="city" name="city" class="w-full rounded border border-gray-300 h-8 bg-white px-2 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
+            </div>
+            <div class="mb-4">
+                <label for="message" class="text-sm leading-7 text-gray-600">Message</label>
+                <textarea id="message" name="message" class="h-20 w-full resize-none rounded border border-gray-300 bg-white py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"></textarea>
+            </div>
+            <button class="rounded border-0 bg-indigo-500 py-2 px-6 text-lg text-white hover:bg-indigo-600 focus:outline-none">REQUEST INFO</button>
+        </form>
+    </div>
+</div>
+
+<div class="page2 w-full min-w-full min-h-[80vh] px-4  mt-20">
+    
+
+    <div class="card-container overflow-x-auto whitespace-nowrap mt-5 relative  overflow-hidden">
+    
+        <div class="hidden left26 h-80 w-16 lg:flex items-center cursor-pointer bg-white absolute left-0 top-0 bottom-0 z-10">
+            <img class="w-12 mx-auto" src="/static/images/left.svg" alt="">
+        </div>
+
+        <div class="hidden lg:flex right26 h-80 w-16 items-center bg-white absolute cursor-pointer right-0 top-0 bottom-0 z-10">
+            <img class="w-12 mx-auto" src="/static/images/right.svg" alt="">
+        </div>
+
+        <div class="investcards w-full lg:w-[93%] lg:max-w-[93%] lg:items-center gap-4 inline-flex lg:ml-[4.5rem] lg:overflow-hidden whitespace-nowrap">
+
+            <!-- Card 1 
+            
+            <div class=" min-h-72 h-72 w-80 min-w-80 border border-black rounded-md">
+                <div class="images flex overflow-hidden">
+                    
+                        <img src="" alt="invest Property Image">
+                   
+                        
+                </div>
+                <div class="card-heading2 flex flex-col">
+                    <h1></h1>
+                    <h2 class="text-sm"></h2>
+                </div>
+            </div>
+        -->
+
+            {% for l in invest_message %}
+        <div class="w-96 min-w-96 border-black rounded-md h-80  overflow-hidden">
+            <div class="h-[70%] min-h-[70%] bg-black">
+                {% if l.image %}
+                <img class="h-full w-full object-cover" src="{{ l.image.url }}" alt="">
+                {% else %}
+                <p>no image</p>
+                    {% endif %}
+            </div>
+            <h1 class="p-3 font-bold text-xl">{{ l.name }}</h1>
+            <p class="px-3">{{ l.price }}</p>
+        </div>
+        {% endfor %}
+        
+<!-- Add more cards here if needed -->
+
+        </div>
+    </div>
+
+
+<div class="page10 w-full min-h-[40%] flex justify-center items-center mt-5">
+    <div class="flex flex-col gap-4 items-center justify-center">
+        <p class="text-sm">Our criteria to choose best projects to invest</p>
+        <h1 class="font-bold text-2xl">OADD</h1>
+        <p>Ownership - Approvals - Demand - Delivery</p>
+        <div class="flex justify-center"> <!-- Added a div with justify-center to center images -->
+            <img class="md:hidden" src="/static/images/mobileImg.svg" alt="">
+            <img class="hidden md:block" src="/static/images/desktop.svg" alt="">
+        </div>
+    </div>
+</div>
+
+
+<div class="page11 w-full min-h-[60%] flex justify-center items-center">
+    <div class="video w-full md:w-[60%] md:h-[50%] p-4 pt-16 rounded-md">
+        <video class="rounded-md" src="/static/videos/investvideo.mp4" controls autoplay muted loop></video>
+    </div>
+</div>
+
+
+<div class="page12 w-full min-h-screen flex justify-center items-center">
+    <div class="md:flex md:items-center md:justify-evenly px-1 grid gap-6 md:gap-10 w-full h-full ">
+        <div class="left p-4 w-full h-auto md:w-[40%] grid gap-5 text-justify">
+            <p class="text-md inline">Why us?</p>
+            <h1>How we are different</h1>
+            <p class="text-sm">
+                At Locale Abode, we believe in delivering the best of the best and raising the bar to the highest level like never before. We make sure that we don’t compromise on anything and deliver what we have promised. localeabode.com, being a subsidiary of IMARAT Group of Companies, has always focused on providing quality-driven services aiming at the greater success of the clients and offers guaranteed excellence and values in its projects.
+            </p>
+            <p>Choose wisely, choose Graana.com because we deliver nothing but the best services. Let us care for you to get the best outcome.</p>
+        </div>
+
+        <div class="right w-full h-auto md:w-[40%] md:justify-self-start">
+            <div class="w-full h-full py-6 border-2 border-black shadow-xl rounded-md">
+                <ul class="grid gap-6">
+                    <li class="pl-2 flex gap-4 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 15 15"><path fill="#F26828" fill-rule="evenodd" d="M0 7.5a7.5 7.5 0 1 1 15 0a7.5 7.5 0 0 1-15 0m7.072 3.21l4.318-5.398l-.78-.624l-3.682 4.601L4.32 7.116l-.64.768z" clip-rule="evenodd"/></svg><h2 class="text-xl font-semibold">Ownership</h2></li>
+                    <li class="pl-2 flex gap-4 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 15 15"><path fill="#F26828" fill-rule="evenodd" d="M0 7.5a7.5 7.5 0 1 1 15 0a7.5 7.5 0 0 1-15 0m7.072 3.21l4.318-5.398l-.78-.624l-3.682 4.601L4.32 7.116l-.64.768z" clip-rule="evenodd"/></svg><h2 class="text-xl font-semibold">Approvals</h2></li>
+                    <li class="pl-2 flex gap-4 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 15 15"><path fill="#F26828" fill-rule="evenodd" d="M0 7.5a7.5 7.5 0 1 1 15 0a7.5 7.5 0 0 1-15 0m7.072 3.21l4.318-5.398l-.78-.624l-3.682 4.601L4.32 7.116l-.64.768z" clip-rule="evenodd"/></svg><h2 class="text-xl font-semibold">Quality Assurance</h2></li>
+                    <li class="pl-2 flex gap-4 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 15 15"><path fill="#F26828" fill-rule="evenodd" d="M0 7.5a7.5 7.5 0 1 1 15 0a7.5 7.5 0 0 1-15 0m7.072 3.21l4.318-5.398l-.78-.624l-3.682 4.601L4.32 7.116l-.64.768z" clip-rule="evenodd"/></svg><h2 class="text-xl font-semibold">Ideal location</h2></li>
+                    <li class="pl-2 flex gap-4 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 15 15"><path fill="#F26828" fill-rule="evenodd" d="M0 7.5a7.5 7.5 0 1 1 15 0a7.5 7.5 0 0 1-15 0m7.072 3.21l4.318-5.398l-.78-.624l-3.682 4.601L4.32 7.116l-.64.768z" clip-rule="evenodd"/></svg><h2 class="text-xl font-semibold">Client Satisfaction</h2></li>
+                    <li class="pl-2 flex gap-4 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 15 15"><path fill="#F26828" fill-rule="evenodd" d="M0 7.5a7.5 7.5 0 1 1 15 0a7.5 7.5 0 0 1-15 0m7.072 3.21l4.318-5.398l-.78-.624l-3.682 4.601L4.32 7.116l-.64.768z" clip-rule="evenodd"/></svg><h2 class="text-xl font-semibold">Maximum Appreciation</h2></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="page13 w-full h-screen grid">
+    <div class="pt-10">
+        <!-- Title -->
+        <h1 class="font-semibold text-3xl text-center">Our Projects</h1>
+        <!-- Description -->
+        <p class="w-full lg:w-[70%] m-auto">
+            Explore curated real estate projects for lucrative investments. Discover diverse opportunities for growth and profitability, from residential to commercial ventures. Let's unlock your investment success together.
+        </p>
+    </div> 
+    
+ 
+    <div>
+        
+        <div class="max-w-4xl mx-auto">
+
+            <div id="default-carousel" class="relative rounded-lg overflow-hidden shadow-lg" data-carousel="static">
+                <!-- Carousel wrapper -->
+                <div class="relative h-80 md:h-96 lg:h-[28rem]" data-carousel-inner>
+                    <!-- Item 1 -->
+                    <div class="hidden  duration-700 ease-in-out" data-carousel-item>
+                        <img src="/static/images/main4.jpg"
+                            class="object-cover w-full h-full" alt="Slide 1">
+                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black opacity-40 to-black"></div>
+                        <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-white md:text-2xl ">IMARAT Builders Mall</span>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="/static/images/pexels-pixabay-37079 (1).jpg"
+                            class="object-cover w-full h-full" alt="Slide 2">
+                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black opacity-40 to-black"></div>
+                            <span class=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-white md:text-2xl ">Amazon outlet Mall</span>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="hidden  duration-700 ease-in-out" data-carousel-item>
+                        <img src="/static/images/pexels-tove-liu-2127454-3937645.jpg"
+                            class="object-cover w-full h-full" alt="Slide 3">
+                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black opacity-40 to-black"></div>
+                            <span class=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-white md:text-2xl ">IMARAT DOWNTOWN</span>
+                            
+                    </div>
+                    <div class="hidden  duration-700 ease-in-out" data-carousel-item>
+                        <img src="/static/images/pexels-tove-liu-2127454-3937645.jpg"
+                            class="object-cover w-full h-full" alt="Slide 3">
+                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black opacity-40 to-black"></div>
+                            <span class=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-white md:text-2xl ">Grand bazar</span>
+                            
+                    </div>
+                    <div class="hidden  duration-700 ease-in-out" data-carousel-item>
+                        <img src="/static/images/pexels-tove-liu-2127454-3937645.jpg"
+                            class="object-cover w-full h-full" alt="Slide 3">
+                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black opacity-40 to-black"></div>
+                            <span class=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-white md:text-2xl ">Bavylon</span>
+                            
+                    </div>
+                    <div class="hidden  duration-700 ease-in-out" data-carousel-item>
+                        <img src="/static/images/pexels-tove-liu-2127454-3937645.jpg"
+                            class="object-cover w-full h-full" alt="Slide 3">
+                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black opacity-40 to-black"></div>
+                            <span class=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-white md:text-2xl ">IMARAT Residences</span>
+                            
+                    </div>
+                    <div class="hidden  duration-700 ease-in-out" data-carousel-item>
+                        <img src="/static/images/pexels-tove-liu-2127454-3937645.jpg"
+                            class="object-cover w-full h-full" alt="Slide 3">
+                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black opacity-40 to-black"></div>
+                            <span class=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-white md:text-2xl ">Florence Galleria</span>
+                            
+                    </div>
+                    <div class="hidden  duration-700 ease-in-out" data-carousel-item>
+                        <img src="/static/images/pexels-tove-liu-2127454-3937645.jpg"
+                            class="object-cover w-full h-full" alt="Slide 3">
+                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black opacity-40 to-black"></div>
+                            <span class=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-white md:text-2xl ">Golf Floras 2
+                    </div>
+                </div>
+                <!-- Slider indicators 
+                <div class="flex absolute bottom-5 left-1/2 z-30 -translate-x-1/2 space-x-2" data-carousel-indicators>
+                    <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400 transition"></button>
+                    <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400 transition"></button>
+                    <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400 transition"></button>
+                </div>-->
+                <!-- Slider controls -->
+                <button type="button"
+                    class="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-200/50 rounded-full hover:bg-gray-300 focus:outline-none transition"
+                    data-carousel-prev>
+                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button type="button"
+                    class="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-200/50 rounded-full hover:bg-gray-300 focus:outline-none transition"
+                    data-carousel-next>
+                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        
+           
+           
+        
+        </div>
+        
+
+    </div>
+</div>
+
+
+{% endblock %} 

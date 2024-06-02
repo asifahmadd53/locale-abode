@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block start %}
+
+<div class="main  mt-24 ">
+        
+    <div class="">
+        <div class="flex items-center justify-evenly">
+            <div class="w-[95%] md:w-[70%] lg:w-[52%] lg:max-w-[52%] flex">
+                <img class="rounded-lg" src="{{ sell_messages.images.url }}" alt="">
+            </div>
+            
+        </div>
+
+       <!-- <div class="inqform border-2 mt-10 hidden">
+            <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+                <div class="text-2xl py-4 px-6 bg-gray-900 text-white text-center font-bold uppercase">
+                    Book an Appointment
+                </div>
+                <form class="py-4 px-6" action="" method="POST">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="name">
+                            Name
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="name" type="text" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="email">
+                            Email
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="email" type="email" placeholder="Enter your email">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="phone">
+                            Phone Number
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="phone" type="tel" placeholder="Enter your phone number">
+                    </div>
+                    
+                   
+                   
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="message">
+                            Message
+                        </label>
+                        <textarea
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="message" rows="4" placeholder="Enter any additional information"></textarea>
+                    </div>
+                    <div class="flex items-center justify-center mb-4">
+                        <button
+                            class="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+                            type="submit">
+                            Book Appointment
+                        </button>
+                    </div>
+            
+                </form>
+            </div>
+        </div>
+-->
+        <section class="ml-5 lg:pl-20">
+            <h1 class="text-xl font-semibold p-6">PKR: <span class="text-2xl p-4">{{ sell_messages.price }}</span> </h1>
+            <div class="w-[50%] lg:w-[30%]">
+                <div class="flex justify-around">
+                    <div class="flex items-center mr-3">
+                        <img class="lg:w-6" src="/static/images/bed.svg"/>
+                        <p class="ml-1 text-sm font-medium text-gray-700">{{ sell_messages.rooms }}</p>
+                    </div>
+                    <div class="flex items-center">
+                        <img class="lg:w-6" src="/static/images/washroom.svg" />
+                        <p class="ml-1 text-sm font-medium text-gray-700">{{ sell_messages.baths }}</p>
+                    </div>
+                    <div class="flex items-center">
+                        <img class="lg:w-6" src="/static/images/area.svg"/>
+                        <p class="ml-1 text-sm font-medium text-gray-700">{{ sell_messages.size }} sqm</p>
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-xl mt-5">{{ sell_messages.additional_details }}</h1>
+            <h1 class="text-lg">{{ sell_messages.city }}</h1>
+            <span class="w-full border-b dark:border-gray-600"></span>
+            <p class="font-bold text-xl py-5">Name of the Owner: <span class="text-lg font-semibold">{{ sell_messages.owner_name }}</span> </p>
+            <p class="py-4 text-xl font-bold">Description:</p>
+            <p>{{ sell_messages.additional_details }}</p>
+            <p class="py-4 text-xl font-bold">Available on</p>
+            <p>{{ sell_messages.availability }}</p>
+        </section>
+        
+        
+      
+    </div>
+    
+    <div class="flex gap-6 ml-6 mb-12 justify-end items-center w-[80%] m-auto">
+       <h1 class="text-xl pr-2">Call Now <span class="px-3">{{sell_messages.contact_number}}</span></h1>
+       <div class="w-10 h-10">
+        <a href="https://wa.me/{{sell_messages.contact_number}} " target="_blank"><img src="/static/images/whatsapp.svg" alt=""></a>
+       </div> 
+    </div>
+    
+    <div class="relative w-[90%] lg:w-[50%] h-[30rem] m-auto mb-9 flex items-center justify-center ">
+        <h1>Map time!</h1>
+        <iframe  class="absolute inset-0 w-full h-full rounded-md" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Sahiwal&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"></iframe>
+    </div>
+    
+
+</div>
+
+
+
+
+
+    {% endblock  %}
+          

@@ -1,0 +1,709 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adminpanel</title>
+    <link rel="stylesheet" href="/static/style2.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    {% tailwind_css %}
+    
+   <div class="main">
+        
+
+      <button data-drawer-target="cta-button-sidebar" data-drawer-toggle="cta-button-sidebar" aria-controls="cta-button-sidebar" type="button" class="togglebtn inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 ">
+
+          <svg class="w-6 h-6 svg" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+          </svg>
+       </button>
+       
+       <aside id="cta-button-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-y-full sm:translate-x-0" aria-label="Sidebar">
+          <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-[#001021]">
+             <ul class="space-y-2 font-medium">
+                <li>
+                   <a href="#" onclick="showPage('page1')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                         <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
+                         <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
+                      </svg>
+                      <span class="ms-3">Dashboard</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page1')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                         <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
+                      </svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Home</span>
+                      <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page2')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                         <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
+                      </svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Inbox</span>
+                      <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page3')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                         <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
+                      </svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Agents</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page4')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                         <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
+                      </svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Properties</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page5')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                          <path  d="M12 14v8H4a8 8 0 0 1 8-8m0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6m9 4h1v5h-8v-5h1v-1a3 3 0 1 1 6 0zm-2 0v-1a1 1 0 1 0-2 0v1z"/></svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Admin</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page6')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="currentColor"><path d="M18.517 2.015H7.884c-1.038 0-2.445-.183-3.165.744c-.427.549-.427 1.36-.427 2.98c0 1.299 1.747 2.272 1.728 2.77c-.02.5-1.728 1.497-1.728 2.827v6.195c0 .594-.28 1.053-.532 1.577c-.625 1.296-.938 1.944-.655 2.418s.98.474 2.378.474h10.37c1.818 0 2.726 0 3.29-.585c.565-.586.565-1.528.565-3.412V6.483c0-.593.28-1.053.532-1.576c.625-1.296.938-1.945.655-2.419c-.282-.473-.98-.473-2.378-.473M15 18H9"/><path d="M13.5 7.5a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0m-3.609 4.056c-.55.316-1.992.96-1.114 1.768c.43.394.907.676 1.508.676h3.43c.6 0 1.079-.282 1.508-.676c.879-.807-.564-1.453-1.114-1.768a4.28 4.28 0 0 0-4.218 0"/></g></svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Wanted</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page7')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M5.504 41.251H42.5V28.153M7.434 37.688L22.424 22.7l5.108 5.108L42.5 12.84v11.056M31.359 12.839H42.5"/><rect width="13.13" height="11.358" x="5.5" y="12.402" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" rx="2.181"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M8.562 16.188h10.067M5.5 19.974h10.067"/><circle cx="12.056" cy="8.589" r="1.84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Invest</span>
+                   </a>
+                </li>
+                <li>
+                   <a href="#" onclick="showPage('page8')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M5.504 41.251H42.5V28.153M7.434 37.688L22.424 22.7l5.108 5.108L42.5 12.84v11.056M31.359 12.839H42.5"/><rect width="13.13" height="11.358" x="5.5" y="12.402" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" rx="2.181"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M8.562 16.188h10.067M5.5 19.974h10.067"/><circle cx="12.056" cy="8.589" r="1.84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <span class="flex-1 ms-3 whitespace-nowrap">Invest in Properties</span>
+                   </a>
+                </li>
+               
+                
+               
+              
+             </ul>
+             
+                
+             </div>
+          </div>
+       </aside>
+       <div class="p-4 sm:ml-64">
+          <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+
+
+            <div id="page1" class="page">
+                <div class="container items-center px-4 py-8 m-auto -mt-4">
+         <div class="flex flex-col md:flex-row items-center justify-evenly">
+            <div class="max-w-sm w-full bg-white rounded-lg shadow p-4 ">
+                <div id="donut-chart"></div>
+              </div>
+              
+    <div class="max-w-sm w-full bg-white rounded-lg shadow  px-2 md:px-4">
+        <div class="flex justify-between items-center">
+          <div>
+            <h5 class="leading-none text-3xl font-bold text-gray-900  pb-2">32.4k</h5>
+            <p class="text-base font-normal ">Users this week</p>
+          </div>
+          <div
+            class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
+            12%
+            <svg class="w-3 h-3 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
+            </svg>
+          </div>
+        </div>
+        <div id="area-chart"></div>
+        <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+          <div class="flex justify-between items-center pt-5">
+            <!-- Button -->
+            
+            <!-- Dropdown menu -->
+            
+            
+          </div>
+        </div>
+      </div>
+      
+         </div>          
+    
+    
+      
+                  </div>
+                  <div class="flex items-center justify-center container relative bottom-8 mx-auto px-4 h-96 ">
+                    <div class="w-[35rem]  flex items-center justify-center" id="bar-chart"></div>
+                </div>
+                <div class="flex flex-wrap pb-3 bg-white divide-y rounded-sm shadow-lg xl:divide-x xl:divide-y-0">
+                    <div class="w-full p-2 xl:w-1/4 sm:w-1/2">
+                        <div class="flex flex-col">
+                            <div class="flex flex-row items-center justify-between px-4 py-4">
+                                <div class="flex mr-4">
+                                    <span class="items-center px-4 py-4 m-auto bg-green-200 rounded-full hover:bg-green-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="items-center w-8 h-8 m-auto text-green-500 hover:text-green-600"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path
+                                                d="M10 20l-5.5-5.5a8 8 0 1111.3 0L10 20zm0-6a6 6 0 100-12 6 6 0 000 12z" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="flex-1 pl-1">
+                                    <div class="text-xl font-medium text-gray-600">1,234</div>
+                                    <div class="text-sm text-gray-400 sm:text-base">
+                                        Available Listings
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 pt-px">
+                                <div class="w-full h-2 bg-gray-200 rounded-md hover:bg-gray-300">
+                                    <div class="h-2 bg-green-500 rounded-md hover:bg-green-600" style="width: 70%"></div>
+                                </div>
+                                <div class="flex flex-row items-center justify-between w-full py-px text-base text-gray-400">
+                                    <p class="flex">Availability</p>
+                                    <div class="flex items-center justify-between space-x-2">
+                                        <p>70%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full p-2 xl:w-1/4 sm:w-1/2">
+                        <div class="flex flex-col">
+                            <div class="flex flex-row items-center justify-between px-4 py-4">
+                                <div class="flex mr-4">
+                                    <span class="items-center px-4 py-4 m-auto bg-red-200 rounded-full hover:bg-red-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="items-center w-8 h-8 m-auto text-red-500 hover:text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 2C7.458 2 3.573 4.882 2 9c1.573 4.118 5.458 7 10 7s8.427-2.882 10-7c-1.573-4.118-5.458-7-10-7z"/>
+                                            <circle cx="12" cy="9" r="3"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="flex-1 pl-1">
+                                    <div class="text-xl font-medium text-gray-600">3,456</div>
+                                    <div class="text-sm text-gray-400 sm:text-base">
+                                        Recent Views
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 pt-px">
+                                <div class="w-full h-2 bg-gray-200 rounded-md hover:bg-gray-300">
+                                    <div class="h-2 bg-red-500 rounded-md hover:bg-red-600" style="width: 78%"></div>
+                                </div>
+                                <div class="flex flex-row items-center justify-between w-full py-px text-base text-gray-400">
+                                    <p class="flex">change</p>
+                                    <div class="flex items-center justify-between space-x-2">
+                                        <p>78%</</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full p-2 xl:w-1/4 sm:w-1/2">
+                        <div class="flex flex-col">
+                            <div class="flex flex-row items-center justify-between px-4 py-4">
+                                <div class="flex mr-4">
+                                    <span class="items-center px-4 py-4 m-auto bg-yellow-200 rounded-full hover:bg-yellow-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="items-center w-8 h-8 m-auto text-yellow-500 hover:text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6a4 4 0 00-4 4v2h4v4h2v-4h4v-2a4 4 0 00-4-4V5z" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="flex-1 pl-1">
+                                    <div class="text-xl font-medium text-gray-600">563</div>
+                                    <div class="text-sm text-gray-400 sm:text-base">
+                                        New Property Listings
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 pt-px">
+                                <div class="w-full h-2 bg-gray-200 rounded-md hover:bg-gray-300">
+                                    <div class="h-2 bg-yellow-500 rounded-md hover:bg-yellow-600" style="width: 86%"></div>
+                                </div>
+                                <div class="flex flex-row items-center justify-between w-full py-px text-base text-gray-400">
+                                    <p class="flex">change</p>
+                                    <div class="flex items-center justify-between space-x-2">
+                                        <p>86%</</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full p-2 xl:w-1/4 sm:w-1/2">
+                        <div class="flex flex-col">
+                            <div class="flex flex-row items-center justify-between px-4 py-4">
+                                <div class="flex mr-4">
+                                    <span class="items-center px-4 py-4 m-auto bg-green-200 rounded-full hover:bg-green-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="items-center w-8 h-8 m-auto text-green-500 hover:text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="flex-1 pl-1">
+                                    <div class="text-xl font-medium text-gray-600">&#36;56,474</div>
+                                    <div class="text-sm text-gray-400 sm:text-base">
+                                        Properties Sold
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 pt-px">
+                                <div class="w-full h-2 bg-gray-200 rounded-md hover:bg-gray-300">
+                                    <div class="h-2 bg-green-500 rounded-md hover:bg-green-600" style="width: 79%"></div>
+                                </div>
+                                <div class="flex flex-row items-center justify-between w-full py-px text-base text-gray-400">
+                                    <p class="flex">change</p>
+                                    <div class="flex items-center justify-between space-x-2">
+                                        <p>79%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+    
+                   
+                   </div>
+
+            <div id="page2" class="page">
+               <h1 class="text-3xl font-bold py-10 text-center w-full">Messages</h1>
+               
+                <div class="flex flex-wrap justify-center mt-5">
+                    {% for i in messages %}
+                    <form action="{% url 'delete_messagecards' i.id %}" method="post">
+                        {% csrf_token %}
+                    
+                    <div class="border-2 border-black w-80 rounded-md m-5 p-4 h-auto">
+                        <h1><span class="text-xl font-semibold">Name: </span>{{ i.name }}</h1>
+                        <h1><span  class="text-xl font-semibold">Phone No: </span>{{ i.phone_number }}</h1>
+                        <h1><span  class="text-xl font-semibold">Email: </span>{{ i.email }}</h1>
+                        <p><span  class="text-xl font-semibold">Message: </span>{{ i.message }}</p>
+                        <div>
+                            <input type="submit"  class=" mt-4 cursor-pointer bg-red-500 text-white p-2 rounded" value="Delete"> </div>
+                    </div>
+                </form>
+                    {% endfor %}
+                </div>
+             
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            </div>
+
+
+
+<div id="page3" class="page">
+   <div class="flex flex-wrap justify-center mt-10">
+
+      <!-- card 1 -->
+      {% for i in emp %}
+
+      <div id="deleteEmployeeModal-{{ i.id }}" class="modal fade">
+
+      <section class="mb-2 border bg-neutral-100 p-4 rounded-lg w-96 m-8">
+          <div class="mx-auto">
+<form action="{% url 'delete' i.id %}" method="post">
+    {% csrf_token %}
+
+              <div class="card md:flex max-w-lg" id="chef-card-{{ i.id }}">
+
+                  <div class="w-20 h-20 mx-auto mb-6 md:mr-6 flex-shrink-0 ">
+                      <img class="object-cover rounded-full"
+                          src="https://tailwindflex.com/public/images/user.png">
+                  </div>
+                  <div id="agent-card" class="flex-grow text-center md:text-left">
+                    <p class="font-bold">Real Estate Agent</p>
+                    <h3 class="text-xl heading">{{i.name}}</h3>
+                    <p class="mt-2 mb-3">{{i.description}}</p>
+                
+                    <div>
+                        <input type="submit"  class=" mt-4 cursor-pointer bg-red-500 text-white p-2 rounded" value="Delete"> </div>
+                </div>
+                
+              </div>
+            </form>
+          </div>
+      </section>
+    </div>
+      {% endfor %}
+     
+      <!-- card 2 -->
+     
+
+
+      <!-- card 3 -->
+      
+  </div>
+</div>
+
+<div id="page4" class="page">
+   <h1 class="text-2xl text-center py-8 underline font-bold">For Sale</h1>
+   <div class="flex flex-wrap justify-center mt-10 ">
+    
+    
+    {% for sell_message in sell_messages %}
+<div class="m-5 ">
+    <form action="{% url 'delete_sellcards' sell_message.id %}" method="post">
+        {% csrf_token %}
+        <div class="min-h-80 h-80 w-60 min-w-60 rounded overflow-hidden shadow-lg hover:shadow-xl">
+
+            {% if sell_message.images %}
+            <div  class="overflow-hidden">
+                <img class="w-full" src="{{ sell_message.images.url }}" alt="Property Image" style="object-fit: cover; height: 100%; width: 100%;">
+            </div>
+            {% else %}
+            <p>No image available</p>
+            {% endif %}
+    
+            <div class="px-2 py-2">
+                <div class="mb-2">
+                    <h2 class="text-sm font-bold text-gray-900">{{sell_message.name_of_prop}}</h2>
+                </div>
+                <div class="flex justify-around">
+                    <div class="flex items-center mr-3">
+                        <img src="/static/images/bed.svg" />
+                        <p class="ml-1 text-sm font-medium text-gray-700">{{sell_message.rooms}}</p>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="/static/images/washroom.svg" />
+                        <p class="ml-1 text-sm font-medium text-gray-700">{{sell_message.baths}}</p>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="/static/images/area.svg" />
+                        <p class="ml-1 text-sm font-medium text-gray-700">{{sell_message.area}}</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="text-2xl font-extrabold text-blue-800">{{sell_message.price}}</p>
+                </div>
+            </div>
+            <div class="px-2 flex justify-between items-center">
+                <div class="flex items-center">
+                    <div>
+                        <p class="text-sm font-medium text-gray-800">Agent Name</p>
+                        <p class="text-xs text-gray-600">{{sell_message.owner_name}}</p>
+                    </div>
+                </div>
+                
+                <input type="submit" value="Delete" class="bg-red-600 p-1 rounded-md cursor-pointer">
+            </div>
+        </div>
+    </form>
+    
+</div>
+{% endfor %}
+   </div>
+<div>
+    <h1 class="text-2xl text-center py-8 underline font-bold">For Rent</h1>
+   <div class="flex flex-wrap justify-center mt-10 ">
+    
+    
+        {% for rent_message in rent_messages %}
+    <div class="m-5 ">
+        <form action="{% url 'delete_rentcards' rent_message.id %}" method="post">
+            {% csrf_token %}
+            <div class="min-h-80 h-80 w-60 min-w-60 rounded overflow-hidden shadow-lg hover:shadow-xl">
+    
+                {% if rent_message.images %}
+                <div  class="overflow-hidden">
+                    <img class="w-full" src="{{ rent_message.images.url }}" alt="Property Image" style="object-fit: cover; height: 100%; width: 100%;">
+                </div>
+                {% else %}
+                <p>No image available</p>
+                {% endif %}
+        
+                <div class="px-2 py-2">
+                    <div class="mb-2">
+                        <h2 class="text-sm font-bold text-gray-900">{{rent_message.name_of_prop}}</h2>
+                    </div>
+                    <div class="flex justify-around">
+                        <div class="flex items-center mr-3">
+                            <img src="/static/images/bed.svg" />
+                            <p class="ml-1 text-sm font-medium text-gray-700">{{rent_message.rooms}}</p>
+                        </div>
+                        <div class="flex items-center">
+                            <img src="/static/images/washroom.svg" />
+                            <p class="ml-1 text-sm font-medium text-gray-700">{{rent_message.baths}}</p>
+                        </div>
+                        <div class="flex items-center">
+                            <img src="/static/images/area.svg" />
+                            <p class="ml-1 text-sm font-medium text-gray-700">{{rent_message.area}}</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-2xl font-extrabold text-blue-800">{{rent_message.price}}</p>
+                    </div>
+                </div>
+                <div class="px-2 flex justify-between items-center">
+                    <div class="flex items-center">
+                        <div>
+                            <p class="text-sm font-medium text-gray-800">Agent Name</p>
+                            <p class="text-xs text-gray-600">{{rentn_message.owner_name}}</p>
+                        </div>
+                    </div>
+                   
+                    <input type="submit" value="Delete" class="bg-red-600 p-1 rounded-md cursor-pointer">
+
+                </div>
+    
+            </div>
+        </form>
+        
+    </div>
+    {% endfor %}
+       </div>
+</div>
+
+</div>
+<div id="page5" class="page">
+
+   <h1 class="text-3xl font-bold py-10 text-center">Admin</h1>
+      <div class=" items-center md:flex-row flex flex-wrap justify-evenly mt-5">
+        <div class="border-2 border-black w-80 rounded-md m-6 p-4">
+            <h1 class="py-4 font-bold"><span class="text-red-600">Admin:</span> Muhammad Asif</h1>
+            <div class="flex flex-col items-center ">
+                
+                <button id="registerButton" class="w-[80%] bg-slate-700 text-white rounded-md m-4 p-2">Register New</button>
+
+
+                <button id="registerButton2" class="w-[80%] bg-slate-700 text-white rounded-md  p-2">Add Agent</button>
+            </div>
+        </div>
+
+
+        <div id="popup-overlay2" class="hidden fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
+            <div id="popup-content2" class="max-w-xl  mt-10 flex w-[80%] md:w-[45%] md:ml-80 flex-col border rounded-lg bg-white p-5 z-[999]">
+                <div class="mt-7 bg-white rounded-xl shadow-lg dark:bg-gray-800 border-2 border-indigo-300">
+                    <div class="p-4 sm:p-7">
+                        <div class="text-center">
+                            <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Add Admin?</h1>
+                        </div>
+                        <div class="mt-5">
+                            <form method="post" action="{% url 'add_admin' %}">
+                                {% csrf_token %}
+                                <div class="grid gap-y-4">
+                                    <div>
+                                        <label for="name" class="block text-sm font-bold ml-1 mb-2 dark:text-white">Enter Admin name</label>
+                                        <div class="relative">
+                                            <input type="text" id="name" name="name" class="py-3 px-4 block w-full border-2 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 shadow-sm" required aria-describedby="email-error">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">Done</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="popup-overlay3" class="hidden fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
+            <div id="popup-content3" class="max-w-xl mt-10 flex w-[80%] md:w-[40%] md:ml-80 flex-col border rounded-lg bg-white p-5 z-[999]">
+                <div class="mt-7 bg-white rounded-xl shadow-lg dark:bg-gray-800 border-2 border-indigo-300">
+                    <div class="p-4 sm:p-7">
+                        <div class="text-center">
+                            <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Add Agent?</h1>
+                        </div>
+                        <div class="mt-5">
+                            <form method="post" action="{% url 'add_agent' %}">
+                                {% csrf_token %}
+                                <div class="grid gap-y-4">
+                                    <div>
+                                        <label for="name" class="block text-sm font-bold ml-1 mb-2 dark:text-white">Enter Agent name</label>
+                                        <div class="relative">
+                                            <input type="text" id="name" name="name" class="py-3 px-4 block w-full border-2 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 shadow-sm" required aria-describedby="email-error">
+                                        </div>
+                                        <label for="name" class="block text-sm font-bold ml-1 mb-2 dark:text-white">Add Description</label>
+                                        <div class="relative">
+                                            <input type="text" id="name" name="description" class="py-3 px-4 block w-full border-2 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 shadow-sm" required aria-describedby="email-error">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">Done</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% for l in add_admin %}
+
+        <div class="border-2 border-black w-80 rounded-md m-6 p-4">
+            <h1 class="py-4 font-bold"><span class="text-red-600">Admin:</span>{{l.name}}</h1>
+            <div class="flex flex-col items-center">
+                
+                <button class="w-[80%] bg-red-800 text-white rounded-md m-4 p-2">Delete Admin</button>
+            </div>
+        </div>
+        {% endfor %}
+        
+      </div>
+</div>
+<div id="page6" class="page">
+
+    <h1 class="text-3xl font-bold py-10 text-center">Wanted Messages</h1>
+    
+    <div class="flex flex-wrap justify-center mt-5">
+
+        {% for i in wanted_messages %}
+        
+        
+      <!-- -->  <div class="border-2 border-black w-80 rounded-md m-4 p-4">
+            <h1 class="font-semibold pb-2"><span>Property Action: </span>{{i.property_action}}</h1>
+            <h1 class="font-semibold pb-2"><span>Property Type: </span>{{i.property_type}}</h1>
+            <h1 class="font-semibold pb-2"><span>Property Sub-type: </span>{{i.property_subtypes}}</h1>
+            <p class="font-semibold pb-2"><span>City: </span>{{i.city_name}}</p>
+            <p class="font-semibold pb-2"><span>Area: </span>{{i.area_name}}</p>
+            <p class="font-semibold pb-2"><span>Name: </span>{{i.name}}</p>
+            <p class="font-semibold pb-2"><span>Phone No: </span>{{i.phone_number}}</p>
+            <p class="font-semibold pb-2"><span>Details: </span>{{i.additional_details}}</p>
+            <button class="w-[80%] bg-red-800 text-white rounded-md m-4 p-2">Delete Wanted</button>
+        </div>
+        
+        
+        {% endfor %}
+        
+    </div>
+
+</div>
+<div id="page7" class="page">
+
+    <div class="flex items-center justify-center">
+        <!-- Author: FormBold Team -->
+        <div class="mx-auto w-full max-w-[550px] bg-white">
+
+            <form class="py-4 px-9" action="{% url 'invest_message' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-5">
+                    <label for="text" class="mb-3 block text-base font-medium text-[#07074D]">
+                        Name:
+                    </label>
+                    <input type="text" name="name" id="text" 
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                </div>
+                <div class="mb-5">
+                    <label for="number" class="mb-3 block text-base font-medium text-[#07074D]">
+                        Price:
+                    </label>
+                    <input type="text" name="price" id="number" 
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                </div>
+                <div class="mb-6 pt-4">
+                    <label class="mb-5 block text-xl font-semibold text-[#07074D]">
+                        Image:
+                    </label>
+                    <div class="mb-8">
+                        <input class="w-full text-sm text-gray-900 border rounded-lg cursor-pointer bg-gray-50 border-[#F26828] focus:border-[#F26828] px-3 h-10 flex pt-2 items-center" id="files" name="image" type="file">
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                        Send File
+                    </button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+</div>
+
+<div id="page8" class="page">
+
+    <h1 class="text-3xl font-bold py-10 text-center">Invest Messages</h1>
+    
+    <div class="flex flex-wrap justify-center mt-5">
+
+   {% for i in invest_prop %}
+<card class="bg-white p-8 w-[32rem]" data-message-id="{{ i.id }}"> 
+    <!-- Header -->
+    <header class="flex font-light text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 rotate-90 -ml-2" viewBox="0 0 24 24" stroke="#b91c1c">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+        </svg>
+        <p>Locale Abode</p>
+    </header>
+
+    <!-- Tags -->
+    <p class="mt-5"> 
+        By: 
+        <a href="#" class="text-red-600">{{i.name}}</a> 
+    </p>
+    <p class="mt-5"> 
+        Email: 
+        <a href="#" class="text-red-600">{{i.email}}</a> 
+    </p>
+
+    <p> 
+        Phone number: 
+        <a href="#" class="text-red-600"> {{i.phone_number}} </a>, 
+    </p>
+    <p> 
+        City: 
+        <a href="#" class="text-red-600"> {{i.city}} </a>, 
+    </p>
+
+    <!-- Description -->
+    <h3 class="font-bold text-xl mt-8"> Message </h3>
+    <p class="font-light"> {{i.message}} </p>
+
+    <!-- Button -->
+    <button class="bg-red-600 text-white font-semibold py-2 px-5 text-sm mt-6 inline-flex items-center group" onclick="deleteInvestMessage('{{ i.id }}')">
+        <p> Delete Invest Message </p>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-2 delay-100 duration-200 ease-in-out" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+    </button>
+</card>
+{% endfor %} 
+
+    </div>
+
+</div>
+             </div>
+
+             
+       </div>
+
+
+</div>
+
+</body>
+<script src="/static/script9.js"></script>
+</html>

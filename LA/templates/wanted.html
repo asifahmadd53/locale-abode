@@ -1,0 +1,325 @@
+{% extends "base.html" %}
+
+        {% block start %}
+
+        <div class="m-6 md:m-10">
+          <div class="lg:flex lg:items-center ">
+            <div class="lg:w-1/2">
+
+                <form id= 'wanted_form' method="POST" action=""> 
+            
+                    {% csrf_token %}  
+
+                 <div class="slideshow flex justify-center md:hidden">
+          
+                  <div class="slideshow-container justify-center flex pt-24 max-w-lg mx-auto relative">
+                     <div class="Slides transition ease-in-out delay-150 flex justify-center items-center"> 
+                       <img  src="/static/images2/5095451.jpg" class="h-48" alt="img1.svg">
+                    </div>
+                    <div class="Slides transition ease-in-out delay-150 flex justify-center items-center">
+                      <img  src="/static/images2/5124556.jpg" class="h-48" alt="img2.svg">
+                   </div>
+                   <div class="Slides transition ease-in-out delay-150 flex justify-center items-center">
+                     <img  src="/static/images2/Happy family with kid buying new house.jpg" class="h-48" alt="img3.svg">
+                     </div> 
+                 </div>
+          
+                  </div>
+          
+                    <br>
+                    <div class="dot-cursor flex justify-center md:hidden">
+                     <div class="flex justify-center mt-1 mb-3">
+                     <button class="dot cursor-pointer self-center mr-2 bg-gray-400 hover:bg-gray-600 rounded-full w-2 h-2 px-1 text-center" onclick="currentSlide(1)"></button>
+                     <button class="dot cursor-pointer self-center mr-2 bg-gray-400 hover:bg-gray-600 rounded-full w-2 h-2 px-1 text-center" onclick="currentSlide(2)"></button>
+                     <button class="dot cursor-pointer self-center bg-gray-400 hover:bg-gray-600 rounded-full w-2 h-2  -1    text-center" onclick="currentSlide(3)"></button>
+                       </div>
+                
+                        <div class="flex flex-col space-y-4 bg-gray-100 rounded-md shadow-sm p-7.5"></div>
+                
+                    </div>
+          
+           
+          
+                   <div class="grid grid-cols-1 gap-4 rounded-md shadow-sm p-7.5 md:justify-center lg:mx-24  ">
+                    <input type="hidden" id="property_action" name="property_action" value="" class="appearance-none border-2 pl-3 border-gray-300 hover:border-gray-400 transition-colors rounded-md w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-purple-[#F26828] focus:border-[#F26828] focus:shadow-outline">
+
+                    
+                       <span class="text-xl font-bold mb-1  md:pt-24">Tell us what you need</span>
+                       <div class = " flex row">
+                       <div class="Sellcont container w-28 h-14 p-1 border-cyan-400 text-xs overflow-hidden">
+                        <button type="button" id="sell_button" class="border spacesbtn11 activebtn11 min-w-full min-h-full p-2 rounded-xl overflow-hidden">
+                          <img class="inline object-contain h-5 pr-4" src="/static/images2/sell-icon.svg" alt="Selllogo">
+                          Sell
+                        </button>
+                      </div>
+                      <div class="Rentcontainer container w-28 p-1 h-14 rounded-sm text-xs overflow-hidden">
+                        <button type="button" id="rent_button" class="border spacesbtn11 min-w-full min-h-full p-2 rounded-xl overflow-hidden">
+                          <img class="inline object-contain h-5 pr-4 " src="/static/images2/rent-icon.svg" alt="">
+                          Rent
+                        </button>
+                      </div>
+                    </dv> 
+                        </div>
+                        
+                  
+                        
+                        
+                      
+                      
+
+
+                     
+                     
+              <div class="gridseconditem  row-span-1 h-24 ">
+              
+                <div class="haveheading ">
+                        <h1  class="text-lg font-semibold pb-3 sm:text-lg sm:font-semibold md:text-xl lg:text-xl  ">What kind of property do you have?</h1>
+                        </div>
+
+                        <input type="hidden" id="property_type" name="property_type" value="" class="appearance-none border-2 pl-3 border-gray-300 hover:border-gray-400 transition-colors rounded-md w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-purple-[#F26828] focus:border-[#F26828] focus:shadow-outline">
+
+                        
+                        <div class="categorycon  flex flex-row '">
+                        
+                            <div class="resedetialbutton  h-12    afterclick">
+                                <button  type="button" id="res_button"  class="blinkbtn spacesbtn16 categorybtn p-2  pl-3  pb-2   max-height-full    focus:outline-none  sm:text-lg sm:font-medium md:text-xl lg:text-xl  activebtn16" data-target="resedentialcont">Residential</button>
+                            </div>
+                            
+                            <div class="plotbtn h-12  ">
+                                <button   type="button" id="plot_button" class="blinkbtn categorybtn p-2 border-none spacesbtn16   border   px-8 pb-2  active:border-red-500    sm:text-lg sm:font-medium md:text-xl lg:text-xl" data-target="Plotcont">Plot</button>  
+                            </div>
+                            
+                            <div class="commercialbtn   ">
+                                <button  type="button" id="comm_button" class="blinkbtn categorybtn p-2  border-none  spacesbtn16  border  px-8 pb-2 active:border-red-500 sm:text-lg sm:font-medium md:text-xl lg:text-xl" data-target="commercialcont">Commercial</button>
+                            </div>
+                        </div>
+                 </div>
+            
+                 
+    
+    
+                 
+                 <div class="gridthirditem">
+             
+                 
+                    <div class="resedentialcont varietycontainer py-4 h-64  flex flex-row flex-wrap  justify-start items-start pb-7 sm:pr-[50%]  md:pr-[20%]  max-h-[100%] " id="resedentialcont">
+                    
+                      <div class="homecont resedentialbtn min-w-4 min-h-4 w-32 p-1 h-14 rounded-sm text-xs inline-block overflow-hidden">
+                        <button type="button" class="sub_types border spacesbtn15 activebtn15 text-xs min-w-full min-h-full p-2 rounded-xl">
+                            <img class="inline object-contain h-5 pr-4" src="/static/images2/house.svg" alt="Sellogo">House
+                        </button>
+                    </div>
+                    
+                    <div class="homecont w-32 p-1 h-14 min-w-4 min-h-10 rounded-sm text-xs inline-block overflow-hidden">
+                        <button type="button" class="sub_types border spacesbtn15 text-xs min-w-full min-h-full p-2 rounded-xl">
+                            <img class="inline object-contain h-5 pr-4" src="/static/images2/apartment.svg" alt="Sellogo">Flat
+                        </button>
+                    </div>
+                    
+                    <div class="homecont w-36 p-1 h-14 rounded-sm text-xs inline-block overflow-hidden">
+                        <button type="button" class="sub_types border spacesbtn15 text-xs min-w-full min-h-full p-1 rounded-xl">
+                            <img class="inline object-contain h-5 pr-2" src="/static/images2/lower-portion.svg" alt="Sellogo">Lower Portion
+                        </button>
+                    </div>
+                    
+                    <div class="homecont w-36 p-1 h-14 rounded-sm text-xs inline-block overflow-hidden">
+                        <button type="button" class="sub_types border spacesbtn15 text-xs min-w-full min-h-full p-1 rounded-xl">
+                            <img class="inline object-contain h-5 pr-2" src="/static/images2/upper-portion.svg" alt="Sellogo">Upper Portion
+                        </button>
+                    </div>
+                    
+                    <div class="homecont w-32 p-1 h-14 rounded-sm text-xs inline-block overflow-hidden">
+                        <button type="button" class="sub_types border text-xs min-w-full min-h-full p-2 rounded-xl spacesbtn15">
+                            <img class="inline object-contain h-5 pr-4" src="/static/images2/basement.svg" alt="Sellogo">Basement
+                        </button>
+                    </div>
+                                      
+                    </div>
+            
+               <!-- here plotcontainercode starts  -->
+               <div class="Plotcont  varietycontainer py-4 h-64  flex flex-row flex-wrap  justify-start items-start pb-7 md:pr-[4%]  max-h-[100%] " id="Plotcont">
+                          
+                     <div  class="homecont resedentialbtn w-36 p-1 h-14 rounded-sm text-xs inline-block   ">
+                        <button  type="button" class=" sub_types border  text-xs min-w-full min-h-full p-2 rounded-xl  spacesbtn15 ">
+                       <img  class="inline object-contain h-5  pr-4" src="/static/images2/house.svg" alt="Sellogo">Resedential  Plot<button>
+                </div> 
+
+                <div  class="homecont  w-36 p-1 h-14 rounded-sm text-xs inline-block   ">
+                    <button   type="button" class=" sub_types border   text-xs  min-w-full  min-h-full  p-2 rounded-xl  spacesbtn15 "  >
+                        <img class="inline object-contain h-5  pr-4 " src="/static/images2/apartment.svg" alt="Sellogo ">Commercial Plot<button>
+                    </div> 
+                   
+                    <div  class="homecont  w-36 p-1 h-14 rounded-sm text-xs inline-block   ">
+                        <button  type="button" class="sub_types border   text-xs  min-w-full  min-h-full  p-2 rounded-xl spacesbtn15"  >
+                            <img class="inline object-contain h-5 pr-4 " src="/static/images2/lower-portion.svg" alt="Sellogo ">Agricultural Plot<button>
+                        </div> 
+                    
+                        <div  class="homecont  w-36 p-1 h-14 rounded-sm text-xs inline-block  ">
+                            <button  type="button" class="sub_types border   text-xs  min-w-full  min-h-full  p-2 rounded-xl spacesbtn15 "  >
+                                <img class="inline object-contain h-5 pr-4 " src="/static/images2/upper-portion.svg" alt="Sellogo ">Industrial Land<button>
+                            </div> 
+                       
+                            <div  class="homecont w-36 p-1 h-14 rounded-sm text-xs inline-block ">
+                                <button  type="button" class="sub_types border  text-xs min-w-full min-h-full  p-2 rounded-xl  spacesbtn15   "  >
+                                    <img class="inline object-contain h-5  pr-4 " src="/static/images2/basement.svg " alt="Sellogo ">FarmHouse Plot<button>
+                                </div> 
+            
+                </div>                
+            
+              <!-- her is the commercial container works  -->
+                    
+              <div class="commercialcont varietycontainer py-4 h-64  flex flex-row flex-wrap  justify-start items-start pb-7 md:pr-[4%]  max-h-[100%] "  id="commercialcont" >
+                    
+    
+                <div  class="homecont resedentialbtn  w-36 p-1 h-14 rounded-sm text-xs inline-block ">
+                <button  type="button" class="sub_types border  text-xs min-w-full min-h-full p-2 rounded-xl   spacesbtn15 "  >
+                    <img  class="inline object-contain h-5 pr-4    " src="/static/images2/house.svg" alt="Sellogo ">Office<button>
+                </div> 
+                
+                <div  class="homecont  w-36 p-1 h-14 rounded-sm text-xs inline-block  ">
+                    <button  type="button" class="sub_types border  text-xs min-w-full min-h-full p-2 rounded-xl  spacesbtn15 "  >
+                        <img class="inline object-contain h-5 pr-4 " src="/static/images2/apartment.svg" alt="Sellogo ">Shop<button>
+                    </div> 
+                   
+                    <div  class="homecont  w-36 p-1 h-14 rounded-sm text-xs inline-block    ">
+                        <button  type="button" class="sub_types border text-xs min-w-full min-h-full p-2 rounded-xl spacesbtn15 "  >
+                            <img class="inline object-contain h-5 pr-4 " src="/static/images2/lower-portion.svg" alt="Sellogo ">Ware House<button>
+                        </div> 
+                    
+                        <div  class="homecont w-36 p-1 h-14 rounded-sm text-xs inline-block     ">
+                            <button  type="button" class="sub_types border text-xs min-w-full min-h-full p-2 rounded-xl spacesbtn15 "  >
+                                <img class="inline object-contain h-5 pr-3" src="/static/images2/upper-portion.svg" alt="Sellogo ">Building<button>
+                            </div> 
+                       
+                            <div  class="homecont  w-36 p-1 h-14 rounded-sm text-xs inline-block     ">
+                                <button  type="button" class="sub_types border text-xs min-w-full min-h-full p-2 rounded-xl  spacesbtn15 "  >
+                                    <img class="inline object-contain h-5 pr-3" src="/static/images2/basement.svg " alt="Sellogo ">Hall<button>
+                                </div> 
+            </div>
+            
+            <input type="hidden" id="property_subtypes" name="property_subtypes" value="" class="appearance-none border-2 pl-3 border-gray-300 hover:border-gray-400 transition-colors rounded-md w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-purple-[#F26828] focus:border-[#F26828] focus:shadow-outline">
+            </div>
+            
+            
+  
+            
+
+  
+            
+                       
+            <div   class=" container  w-68  h-6  relative  overflow-hidden xl:bottom-20" >
+            <h5  class="propertyquestion  text-lg  font-bold   text-gray-800  overflow-hidden">Which City is your property in ?</h5>
+            </div>
+    
+         
+            <div id="cityofinterest" class="relative mb-4 xl:bottom-20"> 
+            <select id="city" name="city" class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:ring-1 w-full">
+                <option >Select city</option>
+                {% for city_code, city_name in cities %}
+                    <option value="{{ city_code }}">{{ city_name }}</option>
+                {% endfor %}
+            </select>
+
+              </div>
+                    
+                  
+                        
+              <div   class=" container  w-68  h-6  pb-4 relative overflow-hidden mb-4 xl:bottom-20 " >
+                <h5  class="propertyquestion  text-lg  font-bold    min-w-full  min-h-full   overflow-hidden">Which area is your property in ?</h5>
+            </div>
+        
+
+            <div id="areaofinterest" class="relative mb-4 xl:bottom-20"> 
+                <select id="area" name="area" class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:ring-1 w-full">
+                            <option >Select area</option>
+                            {% for area_code, area_name in areas %}
+                            <option value="{{ area_code }}">{{ area_name }}</option>
+                            {% endfor %}
+                </select>
+            
+            </div>
+
+                      <div class="relative xl:bottom-20">
+                        <div class="flex flex-col mb-4"> 
+                          <label for="Name" class="text-gray-700 font-bold mb-4"> Name
+                           <span class="text-red-500">*</span>
+                             </label>
+                           <input type="text" id="Name" name="name" placeholder="Name " required="" class="border border-gray-300   rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:ring-1">
+                        </div>
+   
+                           
+                        <div class="flex flex-col mb-4"> 
+                           <label for="Name" class="text-gray-700 font-bold mb-4">Enter Phone number
+                               <span class="text-red-500">*</span>
+                                 </label>
+                           <input type="text" name = "phone_number" required class="border border-gray-300   rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:ring-1" placeholder="Enter phone number">
+                       </div>
+                       
+   
+   
+             
+                        <div class="flex flex-col mb-4"> 
+                          <label for="Additional Details" class="text-gray-700 font-bold mb-4"> Additional Details
+                            <span class="text-red-500">*</span>
+                          </label>
+                            <textarea type="text" id="Additional Details" name="additional_details" placeholder="Additional Details" required="" class="border border-gray-300   rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:ring-1 resize-none" rows="6"></textarea>
+                         </div>
+                      </div>
+                    
+
+                      <div class="checkbox-wrapper">
+                        
+                        <label class="check-box" for="cbtest-19">
+                      </label></div>
+                      
+                      
+                        
+          
+                      <div class="flex items-center mb-4 relative xl:bottom-16">
+                        <input type="checkbox" id="remember-me" name="remember-me" class="border-gray-300 rounded h-5 w-5 focus:ring-indigo-500 focus:ring-2">
+                        <label for="remember-me" class="ml-2 text-gray-700 font-medium"> I have read and agree to the Locale-Abode Term of Service</label>
+                      </div>
+                      
+                      </div>  
+                         <div class="flex submit-button justify-center relative xl:bottom-12">
+                          <button type="submit" class="w-full px-4 py-2 mx-4 md:w-48 rounded-lg bg-slate-600
+                           text-white font-bold hover:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900">Submit</button>
+          
+                          </div>
+                     </div>   
+                      
+                     <div class="x_axis flex-row lg:justify center " > 
+                        <div class="flex-grow"></div> 
+                     </div>
+                    <div class="flex-grow"></div> 
+                    
+                        <div class="wanted-box hidden lg:block text-center relative bottom-72 px-12 ">
+                          <h1 class="wanted-box written text-3xl mb-10 font-semibold">Wanted</h1>
+                          <span class="w-full">For the first time in Pakistan, <br> activate a team of experts in just 3 clicks <br> to find the properties you need with <br>completely secure and transparent transactions</span>
+                          
+          
+                          <div class="image-web flex justify-center w-[30rem]">
+                           <img src="/static/images2/6316.jpg" alt="Image" style="height: 400px; width: 500px">
+                          </div>
+                        </div>
+          
+             </div>
+
+            </form>
+            </div>  
+          </div>
+        </div>
+
+
+        {% if show_popup %}
+        <div id="popup-overlay" class="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 md:w-72 border rounded-md text-center p-6 shadow-lg bg-white">
+                <div class="flex items-center justify-center"><img class="w-48" src="/static/images/undraw_subscriber_re_om92.svg" alt=""></div>
+                <h1 class="font-bold p-3 text-xl">Request Submitted</h1>
+                <p class="leading-normal text-center">You have completed the first step. Our team will contact you soon for the next steps.</p>
+                <button id="ok-button" class="w-[90%] bg-slate-700 text-white rounded-md mt-6 py-2">OK, Thanks</button>
+            </div>
+        </div>
+        {% endif %}
+        
+{% endblock %}
