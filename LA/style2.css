@@ -1,0 +1,31 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css);
+
+/* styles.css */
+/* styles.css */
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Default styles for the menu */
+#cta-button-sidebar {
+    transform: translateX(-100%);
+  }
+  
+  /* Media query for medium and large screens */
+  @media screen and (min-width: 768px) {
+    #cta-button-sidebar {
+      transform: translateX(0) !important; /* Override the default transform */
+    }
+  }
+
+  .imgcontent1{
+    background: linear-gradient(to right, #000000c6, #000000af);
+  }
+
+
+  
